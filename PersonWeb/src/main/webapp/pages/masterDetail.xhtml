@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pe="http://primefaces.org/ui/extensions">
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Master Detail</title>
+</h:head>
+
+
+<h:body >
+
+    <pe:masterDetail id="masterDetail" showAllBreadcrumbItems="true">
+    <pe:masterDetailLevel level="1">
+        <p:dataTable id="persons" value="#{personController.personModel.persons}" var="persons">
+            <p:column headerText="Name">
+                <p:commandLink value="#{persons.firstName}">
+                    <pe:selectDetailLevel contextValue="#{persons}"/>
+                </p:commandLink>
+            </p:column>
+        </p:dataTable>
+    </pe:masterDetailLevel>
+    </pe:masterDetail>
+</h:body>
+</html>

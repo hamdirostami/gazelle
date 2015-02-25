@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/PersonBS/PersonBS.iml" filepath="$PROJECT_DIR$/PersonBS/PersonBS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonDA/PersonDA.iml" filepath="$PROJECT_DIR$/PersonDA/PersonDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonDTO/PersonDTO.iml" filepath="$PROJECT_DIR$/PersonDTO/PersonDTO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonEntity/PersonEntity.iml" filepath="$PROJECT_DIR$/PersonEntity/PersonEntity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonIntegration/PersonIntegration.iml" filepath="$PROJECT_DIR$/PersonIntegration/PersonIntegration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonSI/PersonSI.iml" filepath="$PROJECT_DIR$/PersonSI/PersonSI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonWeb/PersonWeb.iml" filepath="$PROJECT_DIR$/PersonWeb/PersonWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedBS/SharedBS.iml" filepath="$PROJECT_DIR$/SharedBS/SharedBS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedDA/SharedDA.iml" filepath="$PROJECT_DIR$/SharedDA/SharedDA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedDTO/SharedDTO.iml" filepath="$PROJECT_DIR$/SharedDTO/SharedDTO.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedEntity/SharedEntity.iml" filepath="$PROJECT_DIR$/SharedEntity/SharedEntity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedSI/SharedSI.iml" filepath="$PROJECT_DIR$/SharedSI/SharedSI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SharedWeb/SharedWeb.iml" filepath="$PROJECT_DIR$/SharedWeb/SharedWeb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
+    </modules>
+  </component>
+</project>
