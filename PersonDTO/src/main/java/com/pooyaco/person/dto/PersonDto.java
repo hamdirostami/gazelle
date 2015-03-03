@@ -21,6 +21,7 @@ public class PersonDto extends PagingDto {
     private Date dateModified;
     private String modifiedBy;
     private CityDto city;
+    private OrganizationalUnitDto organizationalUnit;
 
     public PersonDto() {
     }
@@ -95,5 +96,13 @@ public class PersonDto extends PagingDto {
 
     public void setCity(CityDto city) {
         this.city = city;
+    }
+
+    public OrganizationalUnitDto getOrganizationalUnit() {
+        return organizationalUnit;
+    }
+
+    public void setOrganizationalUnit(OrganizationalUnitDto organizationalUnit) {
+        this.organizationalUnit = organizationalUnit;
     }
 }

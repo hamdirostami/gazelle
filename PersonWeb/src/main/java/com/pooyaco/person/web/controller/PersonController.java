@@ -1,10 +1,14 @@
 package com.pooyaco.person.web.controller;
 
+import com.pooyaco.gazelle.web.controller.BaseController;
 import com.pooyaco.person.dto.CityDto;
+import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
+import com.pooyaco.person.entity.OrganizationalUnit;
 import com.pooyaco.person.si.CityService;
 import com.pooyaco.person.si.PersonService;
 import com.pooyaco.person.web.model.PersonModel;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +28,7 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
-public class PersonController {
+public class PersonController extends PersonBaseController {
 
     @Inject
     private transient PersonService personService;
@@ -85,10 +89,22 @@ public class PersonController {
         context.addMessage(null, new FacesMessage("Successful", "Your message: " + "Transaction Completed successfully"));
     }
 
+    public void test(SelectEvent event) {
+        OrganizationalUnitDto orgUnit = (OrganizationalUnitDto)event.getObject();
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Org unit selected:", "Id:" + orgUnit.getId() );
+        FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+
+    public void selectOrgFromDialog(OrganizationalUnitDto orgUnit) {
+        RequestContext.getCurrentInstance().closeDialog(orgUnit);
+    }
+
 
     public PersonModel getPersonModel() {
         return personModel;
     }
+
+
 
     public void setPersonModel(PersonModel personModel) {
         this.personModel = personModel;

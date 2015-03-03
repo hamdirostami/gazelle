@@ -22,17 +22,23 @@
             <base-name>person_labels</base-name>
             <var>personlabel</var>
         </resource-bundle>
+
+        <action-listener>org.primefaces.application.DialogActionListener</action-listener>
+        <navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+        <view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+
     </application>
 
     <component>
         <component-type>org.primefaces.component.InputText</component-type>
-        <component-class>com.pooyaco.gazelle.web.component.PooyaInputText</component-class>
+        <component-class>com.pooyaco.gazelle.web.component.GazelleInputText</component-class>
     </component>
+
     <render-kit>
         <renderer>
             <component-family>org.primefaces.component</component-family>
             <renderer-type>org.primefaces.component.InputTextRenderer</renderer-type>
-            <renderer-class>com.pooyaco.gazelle.web.component.PooyaInputTextRenderer</renderer-class>
+            <renderer-class>com.pooyaco.gazelle.web.component.GazelleInputTextRenderer</renderer-class>
         </renderer>
     </render-kit>
 

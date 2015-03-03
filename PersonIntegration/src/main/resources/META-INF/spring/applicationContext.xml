@@ -17,13 +17,18 @@
 
 
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-        <property name="jndiName" value="java:comp/env/jdbc/mcfsDs"/>
-        <property name="resourceRef" value="true"/>
-    </bean>
+        <!--Weblogic setting -->
+        <!--<property name="jndiName" value="jdbc/mcfsDS"/>-->
+
+        <!--Tomcat setting -->
+    <property name="jndiName" value="jdbc/mcfsDs"/>
+
+    <property name="resourceRef" value="true"/>
+</bean>
 
 
 
-    <!-- Necessary to get the entity manager injected into the factory bean -->
+<!-- Necessary to get the entity manager injected into the factory bean -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">

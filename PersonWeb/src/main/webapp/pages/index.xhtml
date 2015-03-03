@@ -2,38 +2,26 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core" xmlns:g="http://pooyaco.ir/ui">
 <h:head>
+    <base  href="#{personController.basePath}" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
 
-    <script type="text/javascript" src="/js/calendar/jquery.ui.datepicker-cc.js"></script>
-    <script type="text/javascript" src="/js/calendar/calendar.all.js"></script>
-    <script type="text/javascript" src="/js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
-    <script type="text/javascript" src="/js/calendar/jquery.maskedinput.min.js"></script>
-    <script type="text/javascript">
-        function a(){
-            alert("hiiiiiii");
-        }
-        function dateInitialize() {
-            $(".date_picker").datepicker({
-                dateFormat: 'yy/mm/dd',
-                changeMonth: true,
-                changeYear: true,
-                showOn: 'button',
-                buttonImage: '/img/calendar.png',
-                buttonImageOnly: true
-            });
-            $(".date_picker").mask("9999/99/99", {placeholder: "yyyy/mm/dd"});
-        }
-    </script>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="js/calendar/calendar.all.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
     <title>#{personlabel.PERSON_LIST}</title>
+
 </h:head>
 <h:body>
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
-        <p:commandButton process="@this" actionListener="#{personController.clear()}" update=":form:personDetail"
+        <p:commandButton process="@this" actionListener="#{personController.clear}" update=":form:personDetail"
                          oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.NEW}">
         </p:commandButton>
 
@@ -84,18 +72,18 @@
 
         <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true"
                   showEffect="fade"
-                  hideEffect="fade" resizable="false" onShow="dateInitialize()">
+                  hideEffect="fade" resizable="false">
             <p:outputPanel id="personDetail" style="text-align:center;">
                 <p:panelGrid styleClass="no-border" columns="2" columnClasses="label,value">
 
                     <h:outputText value="#{personlabel.FIRST_NAME}"/>
-                    <p:inputText value="#{personController.personModel.selectedPerson.firstName}"/>
+                    <p:inputText value="#{personController.personModel.selectedPerson.firstName}" componentType="text"/>
 
                     <h:outputText value="#{personlabel.LAST_NAME}"/>
-                    <p:inputText value="#{personController.personModel.selectedPerson.lastName}"/>
+                    <p:inputText value="#{personController.personModel.selectedPerson.lastName}" onkeyup=""/>
 
                     <h:outputText value="#{personlabel.BIRTHDAY}"/>
-                    <p:inputText styleClass="date_picker" componentType="date" converter="persianDateConverter"
+                    <p:inputText styleClass="date_picker"  componentType="date"
                                  value="#{personController.personModel.selectedPerson.birthday}"/>
 
                     <h:outputText value="#{personlabel.CITY}"/>
@@ -106,10 +94,15 @@
                         </p:commandButton>
                     </p:panelGrid>
 
+                    <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
+                    <g:lov  listName="organizationalUnits"
+                                 value="#{personController.personModel.selectedPerson.organizationalUnit.name}"/>
+
 
                     <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update="growl"
                                      onclick="personInfoDialog.hide();">
                     </p:commandButton>
+                    <p:remoteCommand name="openModalDialog" immediate="true" actionListener="#{personController.openModalDialog}"/>
 
                 </p:panelGrid>
             </p:outputPanel>

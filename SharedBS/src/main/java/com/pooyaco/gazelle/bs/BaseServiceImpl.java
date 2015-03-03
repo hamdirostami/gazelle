@@ -22,7 +22,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 
-public class BaseServiceImpl<D extends Dto, E extends Entity, DAO extends BaseDao<E>> implements BaseService<D> {
+public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO extends BaseDao<E>> implements BaseService<D> {
 
     public BaseServiceImpl() {
     }
