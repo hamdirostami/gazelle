@@ -95,9 +95,8 @@
                     </p:panelGrid>
 
                     <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
-                    <g:lov  listName="organizationalUnits"
+                    <g:lov id="orgUnitName"  widgetVar="orgUnitName"  listName="organizationalUnits"
                                  value="#{personController.personModel.selectedPerson.organizationalUnit.name}"/>
-
 
                     <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update="growl"
                                      onclick="personInfoDialog.hide();">

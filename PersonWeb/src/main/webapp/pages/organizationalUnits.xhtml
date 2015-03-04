@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <base  href="#{personController.basePath}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="js/calendar/calendar.all.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title>#{personlabel.ORGANIZATIONAL_UNIT_LIST}</title>
+
+</h:head>
+<h:body>
+    <h:form id="orgUnitForm">
+        <p:dataTable id="organizationalUnitList" var="orgUnit" value="#{personBaseController.personLovModel.orgUnits}"
+                         selectionMode="single" rowKey="#{orgUnit.id}"
+                         rows="10">
+
+            <p:ajax event="rowSelect" listener="#{personController.onOrgUnitSelect}"/>
+
+                <p:column headerText="#{personlabel.ORG_UNIT_NAME}">
+                    <h:outputText value="#{orgUnit.name}"/>
+                </p:column>
+                <p:column headerText="#{personlabel.ORG_UNIT_CODE}">
+                    <h:outputText value="#{orgUnit.code}"/>
+                </p:column>
+            <p:column headerText="#{personlabel.ORG_UNIT_DEPARTMENT_CODE}">
+                <h:outputText value="#{orgUnit.departmentCode}"/>
+            </p:column>
+            </p:dataTable>
+        <p:commandButton value="select" icon="ui-icon-close" process="@this" actionListener="#{personController.selectOrgFromDialog(orgUnit)}"/>
+    </h:form>
+</h:body>
+</html>

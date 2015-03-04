@@ -89,14 +89,16 @@ public class PersonController extends PersonBaseController {
         context.addMessage(null, new FacesMessage("Successful", "Your message: " + "Transaction Completed successfully"));
     }
 
-    public void test(SelectEvent event) {
+    public void onOrgUnitSelect(SelectEvent event) {
         OrganizationalUnitDto orgUnit = (OrganizationalUnitDto)event.getObject();
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Org unit selected:", "Id:" + orgUnit.getId() );
-        FacesContext.getCurrentInstance().addMessage(null, message);
+        personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
     }
 
     public void selectOrgFromDialog(OrganizationalUnitDto orgUnit) {
         RequestContext.getCurrentInstance().closeDialog(orgUnit);
+        personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
+        FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("form");
+        RequestContext.getCurrentInstance().update("form");
     }
 
 
