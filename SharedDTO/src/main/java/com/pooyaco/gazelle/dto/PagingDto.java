@@ -8,6 +8,7 @@ package com.pooyaco.gazelle.dto;
  * To change this template use File | Settings | File Templates.
  */
 public class PagingDto extends Dto{
+
       private int offset;
       private int max;
 

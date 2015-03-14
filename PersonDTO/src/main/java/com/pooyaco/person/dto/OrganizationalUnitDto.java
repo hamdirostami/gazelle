@@ -10,21 +10,12 @@ import com.pooyaco.gazelle.dto.PagingDto;
  * To change this template use File | Settings | File Templates.
  */
 public class OrganizationalUnitDto extends PagingDto{
-    private Long id;
     private String code;
     private String departmentCode;
     private String name;
 
 
     public OrganizationalUnitDto() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getCode() {

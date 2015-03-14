@@ -10,4 +10,13 @@ import com.pooyaco.gazelle.dto.Dto;
  * To change this template use File | Settings | File Templates.
  */
 public class Dto{
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

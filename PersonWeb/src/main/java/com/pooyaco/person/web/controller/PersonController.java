@@ -1,23 +1,20 @@
 package com.pooyaco.person.web.controller;
 
-import com.pooyaco.gazelle.web.controller.BaseController;
+import com.pooyaco.gazelle.web.model.GazelleLazyDataModel;
 import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
-import com.pooyaco.person.entity.OrganizationalUnit;
 import com.pooyaco.person.si.CityService;
 import com.pooyaco.person.si.PersonService;
 import com.pooyaco.person.web.model.PersonModel;
-import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -53,6 +50,7 @@ public class PersonController extends PersonBaseController {
         personModel = new PersonModel();
         getAll();
         getAllCities();
+        clear();
     }
 
 
@@ -64,10 +62,11 @@ public class PersonController extends PersonBaseController {
     public void update() {
         if (personModel.getSelectedPerson().getId() == null) {
             personService.persist(personModel.getSelectedPerson());
-            getAll();
+
         } else
             personService.merge(personModel.getSelectedPerson());
 
+        getAll();
         addMessage();
     }
 
@@ -77,30 +76,11 @@ public class PersonController extends PersonBaseController {
         addMessage();
     }
 
-    public void onCitySelect(SelectEvent event) {
-        CityDto city = (CityDto) event.getObject();
-        personModel.getSelectedPerson().setCity(city);
-    }
 
-
-    private void addMessage() {
-        FacesContext context = FacesContext.getCurrentInstance();
-
-        context.addMessage(null, new FacesMessage("Successful", "Your message: " + "Transaction Completed successfully"));
-    }
-
-    public void onOrgUnitSelect(SelectEvent event) {
+    public void selectAction(SelectEvent event) {
         OrganizationalUnitDto orgUnit = (OrganizationalUnitDto)event.getObject();
         personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
     }
-
-    public void selectOrgFromDialog(OrganizationalUnitDto orgUnit) {
-        RequestContext.getCurrentInstance().closeDialog(orgUnit);
-        personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
-        FacesContext.getCurrentInstance().getPartialViewContext().getRenderIds().add("form");
-        RequestContext.getCurrentInstance().update("form");
-    }
-
 
     public PersonModel getPersonModel() {
         return personModel;
@@ -113,10 +93,11 @@ public class PersonController extends PersonBaseController {
     }
 
     private void getAll() {
-        personModel.setPersons(personService.getAll(50, 0));
+        personModel.setPersons(new GazelleLazyDataModel(personService.getAll(50,0)));
     }
 
     private void getAllCities() {
         personModel.setCities(cityService.getAll(50, 0));
     }
+
 }

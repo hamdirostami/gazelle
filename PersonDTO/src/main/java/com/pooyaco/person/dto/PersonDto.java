@@ -12,7 +12,6 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class PersonDto extends PagingDto {
-    private Long id;
     private String firstName;
     private String lastName;
     private Date birthday;
@@ -24,6 +23,8 @@ public class PersonDto extends PagingDto {
     private OrganizationalUnitDto organizationalUnit;
 
     public PersonDto() {
+        this.city = new CityDto();
+        this.organizationalUnit = new OrganizationalUnitDto();
     }
 
     public Date getBirthday() {
@@ -40,14 +41,6 @@ public class PersonDto extends PagingDto {
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getLastName() {

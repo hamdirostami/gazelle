@@ -7,10 +7,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Person extends BaseEntity implements AuditableEntity{
+public class Person extends BaseEntity implements AuditableEntity {
 
     private static final long serialVersionUID = 1L;
     private Long id;
+    private OrganizationalUnit organizationalUnit;
     private City city;
     private String firstName;
     private String lastName;
@@ -40,6 +41,15 @@ public class Person extends BaseEntity implements AuditableEntity{
 
     public void setCity(City city) {
         this.city = city;
+    }
+
+    @ManyToOne(optional = true)
+    public OrganizationalUnit getOrganizationalUnit() {
+        return organizationalUnit;
+    }
+
+    public void setOrganizationalUnit(OrganizationalUnit organizationalUnit) {
+        this.organizationalUnit = organizationalUnit;
     }
 
     @Column(nullable = false)

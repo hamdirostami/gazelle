@@ -48,6 +48,8 @@ public class PersonBaseController extends BaseController {
         personLovModel.setOrgUnits(organizationalUnitService.getAll(50, 0));
     }
 
+
+
     public PersonLovModel getPersonLovModel() {
         return personLovModel;
     }

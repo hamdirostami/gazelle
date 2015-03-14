@@ -53,6 +53,9 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
             writer.writeAttribute("value", valueToRender, null);
         }
 
+        /**
+         * add js functions for component types
+         */
         PersianDateConverter persianDateConverter = new PersianDateConverter();
         RequestContext requestContext = RequestContext.getCurrentInstance();
         if (ComponentTypes.date.toString().equals(input.getComponentType())) {

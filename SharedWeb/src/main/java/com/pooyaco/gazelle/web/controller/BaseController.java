@@ -2,6 +2,7 @@ package com.pooyaco.gazelle.web.controller;
 
 import org.primefaces.context.RequestContext;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -19,14 +20,33 @@ public class BaseController {
         return basePath;
     }
 
-    public void openModalDialog(){
-        String dialogName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("dialogName");
-        Map<String,Object> options = new HashMap<String, Object>();
+//    public void openModalDialog(){
+//        String dialogName = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("dialogName");
+//        Map<String,Object> options = new HashMap<String, Object>();
+//        options.put("modal", true);
+//        options.put("draggable", true);
+//        options.put("resizable", true);
+//        options.put("contentHeight", 320);
+//        RequestContext.getCurrentInstance().openDialog(dialogName, options, null);
+//    }
+
+    public void openModalDialog(String dialogName) {
+        Map<String, Object> options = new HashMap<String, Object>();
         options.put("modal", true);
         options.put("draggable", true);
         options.put("resizable", true);
         options.put("contentHeight", 320);
         RequestContext.getCurrentInstance().openDialog(dialogName, options, null);
+    }
+
+    public void closeDialog(Object obj) {
+        RequestContext.getCurrentInstance().closeDialog(obj);
+    }
+
+    public void addMessage() {
+        FacesContext context = FacesContext.getCurrentInstance();
+
+        context.addMessage(null, new FacesMessage("Successful", "Your message: " + "Transaction Completed successfully"));
     }
 
 

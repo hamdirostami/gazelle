@@ -34,8 +34,10 @@
             <p:column headerText="#{personlabel.ORG_UNIT_DEPARTMENT_CODE}">
                 <h:outputText value="#{orgUnit.departmentCode}"/>
             </p:column>
+            <p:column headerText="#{label.SELECT}">
+                <p:commandButton icon="ui-icon-refresh" actionListener="#{personController.closeDialog(orgUnit)}" />
+            </p:column>
             </p:dataTable>
-        <p:commandButton value="select" icon="ui-icon-close" process="@this" actionListener="#{personController.selectOrgFromDialog(orgUnit)}"/>
     </h:form>
 </h:body>
 </html>

@@ -11,7 +11,6 @@ import com.pooyaco.person.dto.CityDto;
  * To change this template use File | Settings | File Templates.
  */
 public class CityDto extends PagingDto{
-    private Long id;
     private String name;
     private String province;
 
@@ -25,14 +24,6 @@ public class CityDto extends PagingDto{
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getProvince() {
