@@ -109,4 +109,8 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         return clazz;
     }
 
+    @Override
+    public Long getCount() {
+        return dao.getCount();
+    }
 }

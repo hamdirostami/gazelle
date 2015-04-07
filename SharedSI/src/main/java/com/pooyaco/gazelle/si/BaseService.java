@@ -25,6 +25,8 @@ public interface BaseService<D extends Dto> {
 
     List<D> getAll(int maxResult, int from);
 
+    Long getCount();
+
 
 
 

@@ -23,7 +23,7 @@
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
         <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":form:personDetail"
-                         oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.NEW}">
+                         oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
         </p:commandButton>
 
         <br/><br/>

@@ -1,9 +1,11 @@
 package com.pooyaco.gazelle.web.model;
 
 import com.pooyaco.gazelle.dto.PagingDto;
+import com.pooyaco.gazelle.si.BaseService;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
+import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -14,16 +16,24 @@ import java.util.Map;
  */
 public class GazelleLazyDataModel<D extends PagingDto> extends LazyDataModel<D> {
 
-    private List<D> dataSource;
+
+    private BaseService baseService;
+
+    public void setBaseService(BaseService baseService) {
+        this.baseService = baseService;
+    }
+
+    private List<D> rows;
 
 
-    public GazelleLazyDataModel(List<D> dataSource) {
-        this.dataSource = dataSource;
+
+    public GazelleLazyDataModel(BaseService baseService) {
+        this.baseService = baseService;
     }
 
     @Override
     public D getRowData(String rowKey) {
-        for (D pagingDto : dataSource) {
+        for (D pagingDto : rows) {
             if (pagingDto.getId().equals(rowKey))
                 return pagingDto;
         }
@@ -38,54 +48,10 @@ public class GazelleLazyDataModel<D extends PagingDto> extends LazyDataModel<D> 
 
     @Override
     public List<D> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-        List<D> data = new ArrayList<D>();
+                rows = baseService.getAll(pageSize, first);
 
-        //filter
-        for (D dto : dataSource) {
-            boolean match = true;
-
-            if (filters != null) {
-                for (Iterator<String> it = filters.keySet().iterator(); it.hasNext(); ) {
-                    try {
-                        String filterProperty = it.next();
-                        Object filterValue = filters.get(filterProperty);
-                        String fieldValue = String.valueOf(dto.getClass().getField(filterProperty).get(dto));
-
-                        if (filterValue == null || fieldValue.startsWith(filterValue.toString())) {
-                            match = true;
-                        } else {
-                            match = false;
-                            break;
-                        }
-                    } catch (Exception e) {
-                        match = false;
-                    }
-                }
-            }
-
-            if (match) {
-                data.add(dto);
-            }
-        }
-
-        //sort
-//        if(sortField != null) {
-//            Collections.sort(data, new LazySorter(sortField, sortOrder));
-//        }
-
-        //rowCount
-        int dataSize = data.size();
-        this.setRowCount(dataSize);
-
-        //paginate
-        if (dataSize > pageSize) {
-            try {
-                return data.subList(first, first + pageSize);
-            } catch (IndexOutOfBoundsException e) {
-                return data.subList(first, first + (dataSize % pageSize));
-            }
-        } else {
-            return data;
-        }
+        setRowCount(baseService.getCount().intValue());
+        setPageSize(pageSize);
+        return rows;
     }
 }

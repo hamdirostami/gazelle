@@ -78,7 +78,7 @@ public class PersonController extends PersonBaseController {
 
 
     public void selectAction(SelectEvent event) {
-        OrganizationalUnitDto orgUnit = (OrganizationalUnitDto)event.getObject();
+        OrganizationalUnitDto orgUnit = (OrganizationalUnitDto) event.getObject();
         personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
     }
 
@@ -87,13 +87,13 @@ public class PersonController extends PersonBaseController {
     }
 
 
-
     public void setPersonModel(PersonModel personModel) {
         this.personModel = personModel;
     }
 
     private void getAll() {
-        personModel.setPersons(new GazelleLazyDataModel(personService.getAll(50,0)));
+        if (personModel.getPersons() == null)
+            personModel.setPersons(new GazelleLazyDataModel(personService));
     }
 
     private void getAllCities() {
