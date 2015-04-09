@@ -3,6 +3,7 @@ package com.pooyaco.gazelle.si;
 import com.pooyaco.gazelle.dto.Dto;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +26,11 @@ public interface BaseService<D extends Dto> {
 
     List<D> getAll(int maxResult, int from);
 
+    List<D> getAll(int maxResult, int from, Map<String,Object> filters);
+
     Long getCount();
+
+    Long getCount(Map<String, Object> filters);
 
 
 

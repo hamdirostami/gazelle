@@ -44,8 +44,8 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
 
     @Override
     public List<D> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-        rows = baseService.getAll(pageSize, first);
-        setRowCount(baseService.getCount().intValue());
+        rows = baseService.getAll(pageSize, first, filters);
+        setRowCount(baseService.getCount(filters).intValue());
         setPageSize(pageSize);
         return rows;
     }

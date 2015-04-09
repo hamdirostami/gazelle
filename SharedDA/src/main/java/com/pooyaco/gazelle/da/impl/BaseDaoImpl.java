@@ -8,10 +8,14 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
+import java.util.Map;
 
 @Named("baseDao")
 public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
@@ -44,6 +48,24 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         return entityManager.find(getEntityClass(), id);
     }
 
+    public List<E> getAll(int maxResult, int from,Map<String,Object> filters) {
+
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        Class<E> clazz = getEntityClass();
+        CriteriaQuery<E> query = entityManager.getCriteriaBuilder().createQuery(clazz);
+        Root<E> variableRoot = query.from(getEntityClass());
+        for (Map.Entry<String, Object> entry : filters.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            Expression<String> path = variableRoot.get(key);
+            query.where(cb.like(path, "%" + value + "%"));
+        }
+        query.select(variableRoot);
+
+        TypedQuery q = entityManager.createQuery(query);
+        return q.setFirstResult(from).setMaxResults(maxResult).getResultList();
+    }
+
     public List<E> getAll(int maxResult, int from) {
         return entityManager.createQuery(getBaseRetrieveQuery()).setFirstResult(from).setMaxResults(maxResult).getResultList();
     }
@@ -71,6 +93,37 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         Query query = this.getEntityManager().createQuery(queryCommand);
         List list = query.getResultList();
 
+        if (list != null && list.size() > 0)
+            return (Long) list.get(0);
+
+        return new Long(0);
+    }
+
+    @Override
+    public Long getCount(Map<String,Object> filters) {
+
+        StringBuilder sb = new StringBuilder(String.format("SELECT COUNT(a) FROM %s AS a ",getEntityClass().getName()));
+        if(filters.size() > 0)
+            sb.append(" WHERE ");
+
+        for (Map.Entry<String, Object> entry : filters.entrySet()) {
+            String key = entry.getKey();
+            sb.append("a.");
+            sb.append(key);
+            sb.append(" LIKE :");
+            sb.append(key);
+        }
+
+        Query query = entityManager.createQuery(sb.toString());
+
+        for (Map.Entry<String, Object> entry : filters.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            query.setParameter(key, "%" + value + "%");
+
+        }
+
+        List list = query.getResultList();
         if (list != null && list.size() > 0)
             return (Long) list.get(0);
 

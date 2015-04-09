@@ -38,7 +38,7 @@
                 #{rowIndex+1}
             </p:column>
 
-            <p:column headerText="#{personlabel.FIRST_NAME}">
+            <p:column headerText="#{personlabel.FIRST_NAME}" filterBy="#{person.firstName}" filterMatchMode="contains">
                 <h:outputText value="#{person.firstName}"/>
             </p:column>
 

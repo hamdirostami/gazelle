@@ -13,6 +13,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -90,6 +91,18 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         return listDto;
     }
 
+    @Override
+    public List<D> getAll(int maxResult, int from, Map<String,Object> filters) {
+        List<E> listEntity = dao.getAll(maxResult, from, filters);
+        List<D> listDto = new ArrayList<D>();
+        for(E entity:listEntity) {
+            D dto = createDtoInstance();
+            getMapper().map(entity, dto, "");
+            listDto.add(dto);
+        }
+        return listDto;
+    }
+
     protected D createDtoInstance() {
         Class<D> dtoClass = getDtoClass();
         D instance = null;
@@ -112,5 +125,10 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     @Override
     public Long getCount() {
         return dao.getCount();
+    }
+
+    @Override
+    public Long getCount(Map<String,Object> filters) {
+        return dao.getCount(filters);
     }
 }
