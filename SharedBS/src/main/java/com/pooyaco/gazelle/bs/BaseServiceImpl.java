@@ -111,4 +111,9 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         Class<D> clazz = (Class<D>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return clazz;
     }
+
+    @Override
+    public Long getCount() {
+        return dao.getCount();
+    }
 }

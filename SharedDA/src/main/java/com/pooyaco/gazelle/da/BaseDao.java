@@ -23,4 +23,6 @@ public interface BaseDao<E extends Entity> {
     List<E> getAll(int maxResult, int from);
 
     Class<E> getEntityClass();
+
+    Long getCount();
 }

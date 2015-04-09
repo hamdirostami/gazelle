@@ -7,6 +7,7 @@ import com.pooyaco.gazelle.entity.Entity;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.ParameterizedType;
@@ -64,4 +65,17 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         Class<E> clazz = (Class<E>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return clazz;
     }
+
+    @Override
+    public Long getCount() {
+        String queryCommand = String.format("SELECT COUNT(a) FROM %s AS a ",getEntityClass().getName());
+        Query query = this.getEntityManager().createQuery(queryCommand);
+        List list = query.getResultList();
+
+        if (list != null && list.size() > 0)
+            return (Long) list.get(0);
+
+        return new Long(0);
+    }
+
 }
