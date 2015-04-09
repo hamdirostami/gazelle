@@ -10,6 +10,7 @@ import com.pooyaco.person.dto.CityDto;
  * Time: 02:55 م
  * To change this template use File | Settings | File Templates.
  */
+//TODO extends DTO
 public class CityDto extends PagingDto{
     private String name;
     private String province;

@@ -7,10 +7,11 @@ package com.pooyaco.gazelle.dto;
  * Time: 02:50 م
  * To change this template use File | Settings | File Templates.
  */
-public class PagingDto extends Dto{
+//TODO what's the usage?
+public class PagingDto extends Dto {
 
-      private int offset;
-      private int max;
+    private int offset;
+    private int max;
 
     public int getMax() {
         return max;

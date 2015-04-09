@@ -107,13 +107,13 @@ public class OrganizationalUnit extends BaseEntity implements AuditableEntity{
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
 
-        OrganizationalUnit person = (OrganizationalUnit) o;
+        OrganizationalUnit organizationalUnit = (OrganizationalUnit) obj;
 
-        if (!id.equals(person.id)) return false;
+        if (!id.equals(organizationalUnit.id)) return false;
 
         return true;
     }

@@ -12,10 +12,10 @@ import java.util.Map;
 /**
  * Created by h.rostami on 2015/03/12.
  */
+//TODO PagingDto ?
 public class GazelleLazyDataModel<D extends PagingDto> extends LazyDataModel<D> {
 
     private List<D> dataSource;
-
 
     public GazelleLazyDataModel(List<D> dataSource) {
         this.dataSource = dataSource;
@@ -40,6 +40,7 @@ public class GazelleLazyDataModel<D extends PagingDto> extends LazyDataModel<D> 
     public List<D> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
         List<D> data = new ArrayList<D>();
 
+        //TODO filter in database
         //filter
         for (D dto : dataSource) {
             boolean match = true;

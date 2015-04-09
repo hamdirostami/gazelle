@@ -45,7 +45,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     @Override
     public void persist(D dto) {
         E entity = getMapper().map(dto, dao.getEntityClass());
-        if(entity instanceof AuditableEntity){
+        if (entity instanceof AuditableEntity) {
             ((AuditableEntity) entity).setDateCreated(new Date());
         }
         dao.persist(entity);
@@ -62,7 +62,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     @Override
     public void merge(D dto) {
         E entity = getMapper().map(dto, dao.getEntityClass());
-        if(entity instanceof AuditableEntity){
+        if (entity instanceof AuditableEntity) {
             ((AuditableEntity) entity).setDateModified(new Date());
         }
         dao.merge(entity);
@@ -70,6 +70,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public D find(Long id) {
+        //TODO throw new UnsupportedOperationException instead of return null
         return null;
     }
 
@@ -82,8 +83,9 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     public List<D> getAll(int maxResult, int from) {
         List<E> listEntity = dao.getAll(maxResult, from);
         List<D> listDto = new ArrayList<D>();
-        for(E entity:listEntity) {
+        for (E entity : listEntity) {
             D dto = createDtoInstance();
+            //TODO what is ""?
             getMapper().map(entity, dto, "");
             listDto.add(dto);
         }
@@ -96,17 +98,17 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         try {
             instance = dtoClass.newInstance();
         } catch (InstantiationException e) {
+            //TODO rethrow an exception
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            //TODO rethrow an exception
             e.printStackTrace();
         }
         return instance;
     }
 
-    public Class<D> getDtoClass()
-    {
+    public Class<D> getDtoClass() {
         Class<D> clazz = (Class<D>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return clazz;
     }
-
 }

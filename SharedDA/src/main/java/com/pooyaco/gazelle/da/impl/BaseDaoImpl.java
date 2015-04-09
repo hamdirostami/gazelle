@@ -26,8 +26,8 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         return entityManager;
     }
 
-
     public void persist(E entity) {
+        //TODO Use getEntityManager() instead of entityManager
         entityManager.persist(entity);
     }
 
@@ -44,6 +44,7 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
     }
 
     public List<E> getAll(int maxResult, int from) {
+        //TODO Break into lines
         return entityManager.createQuery(getBaseRetrieveQuery()).setFirstResult(from).setMaxResults(maxResult).getResultList();
     }
 

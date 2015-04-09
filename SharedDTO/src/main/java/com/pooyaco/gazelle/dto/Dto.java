@@ -1,7 +1,5 @@
 package com.pooyaco.gazelle.dto;
 
-import com.pooyaco.gazelle.dto.Dto;
-
 /**
  * Created with IntelliJ IDEA.
  * User: h.rostami
@@ -10,6 +8,7 @@ import com.pooyaco.gazelle.dto.Dto;
  * To change this template use File | Settings | File Templates.
  */
 public class Dto{
+    //TODO remove?
     private Long id;
 
     public Long getId() {

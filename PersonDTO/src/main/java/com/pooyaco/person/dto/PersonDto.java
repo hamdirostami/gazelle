@@ -11,6 +11,7 @@ import java.util.Date;
  * Time: 02:55 م
  * To change this template use File | Settings | File Templates.
  */
+//TODO Should not extends PagingDto
 public class PersonDto extends PagingDto {
     private String firstName;
     private String lastName;

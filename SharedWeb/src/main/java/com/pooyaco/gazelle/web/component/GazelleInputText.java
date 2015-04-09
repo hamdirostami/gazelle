@@ -11,6 +11,7 @@ public class GazelleInputText extends InputText {
 
         componentType;
 
+        //TODO usage?
         String toString;
 
         Properties(String toString) {

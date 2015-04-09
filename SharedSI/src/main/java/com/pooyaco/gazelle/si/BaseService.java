@@ -19,6 +19,7 @@ public interface BaseService<D extends Dto> {
 
     void merge(D dto);
 
+    //TODO find should support other types of PKs too
     D find(Long id);
 
     List<D> getAll();
