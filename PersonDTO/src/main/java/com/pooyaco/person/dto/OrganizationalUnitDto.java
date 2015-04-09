@@ -1,6 +1,6 @@
 package com.pooyaco.person.dto;
 
-import com.pooyaco.gazelle.dto.PagingDto;
+import com.pooyaco.gazelle.dto.Dto;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,7 +9,7 @@ import com.pooyaco.gazelle.dto.PagingDto;
  * Time: 02:55 م
  * To change this template use File | Settings | File Templates.
  */
-public class OrganizationalUnitDto extends PagingDto{
+public class OrganizationalUnitDto extends Dto {
     private String code;
     private String departmentCode;
     private String name;

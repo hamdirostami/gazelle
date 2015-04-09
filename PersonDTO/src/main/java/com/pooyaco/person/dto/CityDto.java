@@ -1,7 +1,6 @@
 package com.pooyaco.person.dto;
 
-import com.pooyaco.gazelle.dto.PagingDto;
-import com.pooyaco.person.dto.CityDto;
+import com.pooyaco.gazelle.dto.Dto;
 
 /**
  * Created with IntelliJ IDEA.
@@ -10,7 +9,7 @@ import com.pooyaco.person.dto.CityDto;
  * Time: 02:55 م
  * To change this template use File | Settings | File Templates.
  */
-public class CityDto extends PagingDto{
+public class CityDto extends Dto {
     private String name;
     private String province;
 
