@@ -9,7 +9,6 @@ import org.primefaces.util.HTML;
 
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
 import java.io.IOException;
 
 /**
@@ -17,9 +16,10 @@ import java.io.IOException;
  */
 public class GazelleInputTextRenderer extends InputTextRenderer {
 
+    //TODO use this in GazelleInputText
     protected enum ComponentTypes {
 
-        date, text,number;
+        date, text, number;
 
         String toString;
 
@@ -36,6 +36,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
     }
 
 
+    //TODO can't we call super.encodeMarkup ?
     @Override
     public void encodeMarkup(FacesContext context, InputText inputText) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
