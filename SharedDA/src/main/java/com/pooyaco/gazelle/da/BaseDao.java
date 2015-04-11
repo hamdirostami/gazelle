@@ -23,12 +23,12 @@ public interface BaseDao<E extends Entity> {
     //TODO remove "All" from the name
     List<E> getAll(int maxResult, int from);
 
-    List<E> getAll(int maxResult, int from, Map<String,Object> filters);
+    List<E> getAll(int maxResult, int from, Map<String, Object> filters);
 
     Class<E> getEntityClass();
 
     Long getCount();
 
-    Long getCount(Map<String,Object> filters);
+    Long getCount(Map<String, Object> filters);
 
 }

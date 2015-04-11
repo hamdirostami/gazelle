@@ -13,21 +13,22 @@ import java.util.Map;
  */
 public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
 
-
+    //TODO Using service in Model?
     private BaseService baseService;
 
     public void setBaseService(BaseService baseService) {
         this.baseService = baseService;
     }
 
+    //TODO why?
     private List<D> rows;
-
 
     public GazelleLazyDataModel(BaseService baseService) {
         this.baseService = baseService;
     }
 
     @Override
+    //TODO load from DB.
     public D getRowData(String rowKey) {
         for (D pagingDto : rows) {
             if (pagingDto.getId().equals(rowKey))

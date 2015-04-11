@@ -27,13 +27,11 @@ public interface BaseService<D extends Dto> {
 
     List<D> getAll(int maxResult, int from);
 
-    List<D> getAll(int maxResult, int from, Map<String,Object> filters);
+    List<D> getAll(int maxResult, int from, Map<String, Object> filters);
 
     Long getCount();
 
     Long getCount(Map<String, Object> filters);
-
-
 
 
 }

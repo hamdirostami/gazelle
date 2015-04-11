@@ -22,6 +22,7 @@
 <h:body>
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
+        <!-- TODO move "PF('personDialog').show()" to controller. -->
         <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":form:personDetail"
                          oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
         </p:commandButton>
@@ -47,6 +48,7 @@
             </p:column>
 
             <p:column headerText="#{personlabel.BIRTHDAY}">
+                <!-- TODO use date component -->
                 <h:outputText converter="persianDateConverter" value="#{person.birthday}"/>
             </p:column>
 
@@ -104,6 +106,7 @@
                     <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":form:personList"
                                      onclick="personInfoDialog.hide();">
                     </p:commandButton>
+                    <!-- TODO What's the usage? -->
                     <p:remoteCommand name="openModalDialog" immediate="true"
                                      actionListener="#{personController.openModalDialog}"/>
 

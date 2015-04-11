@@ -42,11 +42,12 @@ public class BaseController {
     }
 
     //TODO rename obj to data or returnValue
+    //TODO wrong place
     public void closeDialog(Object obj) {
         RequestContext.getCurrentInstance().closeDialog(obj);
     }
 
-    //TODO ?
+    //TODO rename
     public void addMessage() {
         FacesContext context = FacesContext.getCurrentInstance();
 

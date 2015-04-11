@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Named("baseDao")
-public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
+public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
 
 
     public BaseDaoImpl() {
@@ -48,7 +48,7 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         return entityManager.find(getEntityClass(), id);
     }
 
-    public List<E> getAll(int maxResult, int from,Map<String,Object> filters) {
+    public List<E> getAll(int maxResult, int from, Map<String, Object> filters) {
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         Class<E> clazz = getEntityClass();
@@ -75,7 +75,7 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         return entityManager.createQuery(getBaseRetrieveQuery()).getResultList();
     }
 
-    protected CriteriaQuery<E> getBaseRetrieveQuery(){
+    protected CriteriaQuery<E> getBaseRetrieveQuery() {
         Class<E> clazz = getEntityClass();
         CriteriaQuery<E> query = entityManager.getCriteriaBuilder().createQuery(clazz);
         Root<E> variableRoot = query.from(getEntityClass());
@@ -89,22 +89,23 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
     }
 
     @Override
+    //TODO rename
     public Long getCount() {
-        String queryCommand = String.format("SELECT COUNT(a) FROM %s AS a ",getEntityClass().getName());
+        String queryCommand = String.format("SELECT COUNT(a) FROM %s AS a ", getEntityClass().getName());
         Query query = this.getEntityManager().createQuery(queryCommand);
         List list = query.getResultList();
 
         if (list != null && list.size() > 0)
             return (Long) list.get(0);
 
-        return new Long(0);
+        return 0L;
     }
 
     @Override
-    public Long getCount(Map<String,Object> filters) {
+    public Long getCount(Map<String, Object> filters) {
 
-        StringBuilder sb = new StringBuilder(String.format("SELECT COUNT(a) FROM %s AS a ",getEntityClass().getName()));
-        if(filters.size() > 0)
+        StringBuilder sb = new StringBuilder(String.format("SELECT COUNT(a) FROM %s AS a ", getEntityClass().getName()));
+        if (filters.size() > 0)
             sb.append(" WHERE ");
 
         for (Map.Entry<String, Object> entry : filters.entrySet()) {
@@ -128,7 +129,7 @@ public  class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         if (list != null && list.size() > 0)
             return (Long) list.get(0);
 
-        return new Long(0);
+        return 0L;
     }
 
 }
