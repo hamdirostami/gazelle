@@ -16,11 +16,13 @@ import java.io.IOException;
  */
 public class GazelleInputTextRenderer extends InputTextRenderer {
 
-    //TODO use this in GazelleInputText
+    //TODO move this in GazelleInputText
     protected enum ComponentTypes {
 
+        //TODO move date to a new component
         date, text, number;
 
+        //TODO remove
         String toString;
 
         ComponentTypes(String toString) {
@@ -36,7 +38,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
     }
 
 
-    //TODO can't we call super.encodeMarkup ?
+    //TODO call super.encodeMarkup
     @Override
     public void encodeMarkup(FacesContext context, InputText inputText) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
@@ -60,6 +62,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
         PersianDateConverter persianDateConverter = new PersianDateConverter();
         RequestContext requestContext = RequestContext.getCurrentInstance();
         if (ComponentTypes.date.toString().equals(input.getComponentType())) {
+            //TODO pass clientId
             requestContext.execute("dateInitialize();");
             input.setConverter(persianDateConverter);
         } else if (ComponentTypes.number.toString().equals(input.getComponentType()))

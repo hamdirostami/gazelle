@@ -20,7 +20,7 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
         this.baseService = baseService;
     }
 
-    //TODO why?
+    //TODO remove
     private List<D> rows;
 
     public GazelleLazyDataModel(BaseService baseService) {

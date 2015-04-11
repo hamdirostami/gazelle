@@ -86,8 +86,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         List<D> listDto = new ArrayList<D>();
         for (E entity : listEntity) {
             D dto = createDtoInstance();
-            //TODO what is ""?
-            getMapper().map(entity, dto, "");
+            getMapper().map(entity, dto);
             listDto.add(dto);
         }
         return listDto;

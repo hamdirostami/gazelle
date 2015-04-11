@@ -33,38 +33,19 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: com.ghasemkiani:persiancalendar:1.0" />
-          <element id="archive" name="PersonSI-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="PersonSI" />
+          <element id="archive" name="SharedDTO-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="SharedDTO" />
           </element>
           <element id="archive" name="SharedSI-1.0-SNAPSHOT.jar">
             <element id="module-output" name="SharedSI" />
           </element>
-          <element id="archive" name="SharedDTO-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="SharedDTO" />
+          <element id="archive" name="PersonSI-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="PersonSI" />
           </element>
           <element id="archive" name="PersonDTO-1.0-SNAPSHOT.jar">
             <element id="module-output" name="PersonDTO" />
           </element>
-          <element id="file-copy" path="$MAVEN_REPOSITORY$/PersonBS/PersonBS/1.0-SNAPSHOT/PersonBS-1.0-SNAPSHOT.jar" output-file-name="PersonBs-1.0-SNAPSHOT.jar" />
-          <element id="archive" name="SharedBS-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="SharedBS" />
-          </element>
-          <element id="archive" name="SharedDA-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="SharedDA" />
-          </element>
-          <element id="archive" name="SharedEntity-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="SharedEntity" />
-          </element>
-          <element id="library" level="project" name="Maven: net.sf.dozer:dozer:5.4.0" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.6.6" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-log4j12:1.6.6" />
-          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
-          <element id="archive" name="PersonDA-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="PersonDA" />
-          </element>
-          <element id="archive" name="PersonEntity-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="PersonEntity" />
-          </element>
+          <element id="library" level="project" name="Maven: PersonBs:PersonBs:1.0-SNAPSHOT" />
           <element id="archive" name="PersonIntegration-1.0-SNAPSHOT.jar">
             <element id="module-output" name="PersonIntegration" />
           </element>

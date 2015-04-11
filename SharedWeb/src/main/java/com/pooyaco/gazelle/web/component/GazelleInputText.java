@@ -11,7 +11,7 @@ public class GazelleInputText extends InputText {
 
         componentType;
 
-        //TODO usage?
+        //TODO usage? remove is unused.
         String toString;
 
         Properties(String toString) {
@@ -30,6 +30,7 @@ public class GazelleInputText extends InputText {
         super();
     }
 
+    //TODO change type to ComponentType enum
     public java.lang.String getComponentType() {
         return (java.lang.String) getStateHelper().eval(Properties.componentType, null);
     }

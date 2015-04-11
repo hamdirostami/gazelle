@@ -48,6 +48,7 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         return entityManager.find(getEntityClass(), id);
     }
 
+    //TODO comment filters
     public List<E> getAll(int maxResult, int from, Map<String, Object> filters) {
 
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -109,6 +110,7 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
             sb.append(" WHERE ");
 
         for (Map.Entry<String, Object> entry : filters.entrySet()) {
+            //TODO use String.format
             String key = entry.getKey();
             sb.append("a.");
             sb.append(key);

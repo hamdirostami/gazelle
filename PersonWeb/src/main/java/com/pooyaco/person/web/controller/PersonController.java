@@ -24,7 +24,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Named
-//TODO @ViewScoped or @RequestScoped?
+//TODO change to @RequestScoped
 @ViewScoped
 public class PersonController extends PersonBaseController {
 
@@ -57,6 +57,7 @@ public class PersonController extends PersonBaseController {
     //TODO rename
     public void clear() {
         personModel.setSelectedPerson(new PersonDto());
+        //TODO show dialog here
     }
 
 
@@ -69,6 +70,7 @@ public class PersonController extends PersonBaseController {
 
         getAll();
         addMessage();
+        //TODO hide dialog here
     }
 
     public void delete() {
