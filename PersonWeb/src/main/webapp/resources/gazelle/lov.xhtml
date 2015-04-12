@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3c.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:composite="http://java.sun.com/jsf/composite">
-
+<!-- TODO move to ShareWeb -->
 <composite:interface componentType="gazelleLovComponent">
     <composite:attribute name="actionListener" method-signature="void openModalDialog(java.lang.String)"/>
     <composite:attribute name="selectEventListener" method-signature="void selectAction(org.primefaces.event.SelectEvent)"/>
@@ -13,7 +13,7 @@
     <composite:attribute name="value"/>
 </composite:interface>
 <composite:implementation>
-        <p:inputText id="#{cc.attrs.inputId}" alt="#{cc.attrs.asdfg}" value="#{cc.attrs.value}"/>
+        <p:inputText id="#{cc.attrs.inputId}" value="#{cc.attrs.value}"/>
         <p:commandButton immediate="true" process="@this"  icon="ui-icon-search" actionListener="#{cc.attrs.actionListener}">
             <p:ajax event="dialogReturn" listener="#{cc.selectEventListener}" update=":form:#{cc.attrs.id}:#{cc.attrs.inputId}"/>
         </p:commandButton>

@@ -99,6 +99,7 @@
                     </p:selectOneMenu>
 
                     <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
+                    <!-- TODO update attribute -->
                     <g:lov id="orgUnit" inputId="orgUnitName" selectEventListener="#{personController.selectAction}"
                            value="#{personController.personModel.selectedPerson.organizationalUnit.name}"
                            actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:lov>
