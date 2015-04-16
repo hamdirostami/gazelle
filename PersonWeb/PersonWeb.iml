@@ -58,9 +58,6 @@
     <orderEntry type="module" module-name="SharedDTO" />
     <orderEntry type="module" module-name="SharedSI" />
     <orderEntry type="module" module-name="PersonSI" />
-    <orderEntry type="module" module-name="SharedDTO" />
-    <orderEntry type="module" module-name="PersonSI" />
-    <orderEntry type="module" module-name="SharedSI" />
     <orderEntry type="module" module-name="PersonDTO" />
     <orderEntry type="library" name="Maven: PersonBs:PersonBs:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="SharedBS" />
@@ -79,7 +76,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-instrument:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.7.4" level="project" />
