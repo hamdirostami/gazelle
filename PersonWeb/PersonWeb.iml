@@ -49,11 +49,15 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.0.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-web:3.2.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:3.2.3.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:3.2.8.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.security:spring-security-config:3.2.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: com.ghasemkiani:persiancalendar:1.0" level="project" />
+    <orderEntry type="module" module-name="SharedDTO" />
     <orderEntry type="module" module-name="PersonSI" />
     <orderEntry type="module" module-name="SharedSI" />
-    <orderEntry type="module" module-name="SharedDTO" />
     <orderEntry type="module" module-name="PersonDTO" />
     <orderEntry type="library" name="Maven: PersonBs:PersonBs:1.0-SNAPSHOT" level="project" />
     <orderEntry type="module" module-name="SharedBS" />
@@ -72,7 +76,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.3.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-instrument:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aspects:4.0.3.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.aspectj:aspectjweaver:1.7.4" level="project" />

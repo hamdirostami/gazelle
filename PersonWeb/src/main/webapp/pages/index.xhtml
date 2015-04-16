@@ -20,11 +20,18 @@
 
 </h:head>
 <h:body>
+    <h:form id="logoutform">
+        <div style="float: left">
+            <p:commandButton id="logoutbutton" ajax="false" action="#{authenticationBean.doLogout}" value="#{label.LOGOUT}"/>
+        </div>
+    </h:form>
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
         <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":form:personDetail"
                          oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.NEW}">
         </p:commandButton>
+
+
 
         <br/><br/>
         <p:dataTable id="personList" var="person" update=":form:personDetail" lazy="true"

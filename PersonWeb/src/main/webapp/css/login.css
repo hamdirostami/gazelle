@@ -1,0 +1,28 @@
+.middle {
+    width: 350px;
+    padding: 20px;
+    margin: 100px auto;
+    background: #faffff;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    border: 2px solid #99e0ff;
+}
+
+.login-button{
+    width: 90px;
+    text-align: center;
+}
+
+.clear-button{
+    width: 80px;
+    text-align: center !important;
+}
+
+.username-label{
+    font-family: NeoSans !important;
+}
+
+.password-label{
+    font-family: NeoSans !important;
+}

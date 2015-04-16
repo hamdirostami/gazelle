@@ -18,13 +18,13 @@
 
     <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
         <!--Weblogic setting -->
-        <!--<property name="jndiName" value="jdbc/mcfsDS"/>-->
+            <!--<property name="jndiName" value="jdbc/mcfsDS"/>-->
 
-        <!--Tomcat setting -->
-    <property name="jndiName" value="jdbc/mcfsDs"/>
+            <!--Tomcat setting -->
+        <property name="jndiName" value="jdbc/mcfsDs"/>
 
-    <property name="resourceRef" value="true"/>
-</bean>
+        <property name="resourceRef" value="true"/>
+    </bean>
 
 
 
