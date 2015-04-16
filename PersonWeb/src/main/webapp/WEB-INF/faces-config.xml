@@ -15,10 +15,11 @@
         </locale-config>
 
         <resource-bundle>
-            <base-name>labels</base-name>
+            <base-name>com.pooyaco.gazelle.web.bundle.GazelleBundle_en</base-name>
             <var>label</var>
         </resource-bundle>
         <resource-bundle>
+            <base-name>com.pooyaco.person.web.bundle.PersonBundle_en</base-name>
             <base-name>messages</base-name>
             <var>message</var>
         </resource-bundle>

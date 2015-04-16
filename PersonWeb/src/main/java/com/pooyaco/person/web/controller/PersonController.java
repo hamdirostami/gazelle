@@ -24,6 +24,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Named
+//TODO change to @RequestScoped
 @ViewScoped
 public class PersonController extends PersonBaseController {
 
@@ -41,7 +42,7 @@ public class PersonController extends PersonBaseController {
         this.cityService = cityService;
     }
 
-
+    //TODO rename to model
     private PersonModel personModel;
 
 
@@ -53,9 +54,10 @@ public class PersonController extends PersonBaseController {
         clear();
     }
 
-
+    //TODO rename
     public void clear() {
         personModel.setSelectedPerson(new PersonDto());
+        //TODO show dialog here
     }
 
 
@@ -68,6 +70,7 @@ public class PersonController extends PersonBaseController {
 
         getAll();
         addMessage();
+        //TODO hide dialog here
     }
 
     public void delete() {
@@ -78,7 +81,7 @@ public class PersonController extends PersonBaseController {
 
 
     public void selectAction(SelectEvent event) {
-        OrganizationalUnitDto orgUnit = (OrganizationalUnitDto)event.getObject();
+        OrganizationalUnitDto orgUnit = (OrganizationalUnitDto) event.getObject();
         personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
     }
 
@@ -87,13 +90,13 @@ public class PersonController extends PersonBaseController {
     }
 
 
-
     public void setPersonModel(PersonModel personModel) {
         this.personModel = personModel;
     }
 
     private void getAll() {
-        personModel.setPersons(new GazelleLazyDataModel(personService.getAll(50,0)));
+        if (personModel.getPersons() == null)
+            personModel.setPersons(new GazelleLazyDataModel(personService));
     }
 
     private void getAllCities() {

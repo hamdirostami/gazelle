@@ -1,7 +1,5 @@
 package com.pooyaco.gazelle.dto;
 
-import com.pooyaco.gazelle.dto.Dto;
-
 /**
  * Created with IntelliJ IDEA.
  * User: h.rostami
@@ -9,14 +7,8 @@ import com.pooyaco.gazelle.dto.Dto;
  * Time: 10:26 ص
  * To change this template use File | Settings | File Templates.
  */
-public class Dto{
-    private Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+public abstract class Dto{
+    //TODO rename id to PK.
+    public abstract Object getPK();
+    public abstract void setPK(Object pk);
 }

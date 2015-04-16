@@ -19,7 +19,9 @@ public class PersonModel{
     public PersonModel() {
     }
 
+    //TODO move to controller
     private GazelleLazyDataModel<PersonDto> persons;
+
     private PersonDto selectedPerson;
     private List<CityDto> cities;
 

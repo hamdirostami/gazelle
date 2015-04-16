@@ -13,6 +13,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -64,6 +65,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public D find(Long id) {
+        //TODO throw new UnsupportedOperationException instead of return null
         return null;
     }
 
@@ -75,6 +77,18 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     @Override
     public List<D> getAll(int maxResult, int from) {
         List<E> listEntity = dao.getAll(maxResult, from);
+        List<D> listDto = new ArrayList<D>();
+        for (E entity : listEntity) {
+            D dto = createDtoInstance();
+            getMapper().map(entity, dto);
+            listDto.add(dto);
+        }
+        return listDto;
+    }
+
+    @Override
+    public List<D> getAll(int maxResult, int from, Map<String,Object> filters) {
+        List<E> listEntity = dao.getAll(maxResult, from, filters);
         List<D> listDto = new ArrayList<D>();
         for(E entity:listEntity) {
             D dto = createDtoInstance();
@@ -90,17 +104,27 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
         try {
             instance = dtoClass.newInstance();
         } catch (InstantiationException e) {
+            //TODO rethrow an exception
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            //TODO rethrow an exception
             e.printStackTrace();
         }
         return instance;
     }
 
-    public Class<D> getDtoClass()
-    {
+    public Class<D> getDtoClass() {
         Class<D> clazz = (Class<D>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return clazz;
     }
 
+    @Override
+    public Long getCount() {
+        return dao.getCount();
+    }
+
+    @Override
+    public Long getCount(Map<String,Object> filters) {
+        return dao.getCount(filters);
+    }
 }

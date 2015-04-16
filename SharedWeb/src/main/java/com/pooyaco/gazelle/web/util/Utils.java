@@ -3,16 +3,18 @@ package com.pooyaco.gazelle.web.util;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
+//TODO rename to WebUtils or JsfUtils or ...
 public class Utils {
     public static final String MICROSOFT_IE = "MSIE";
     public static final String MOZILLA_FIREFOX = "Firefox";
     public static final String GENERIC_BROWSER = "GENERIC";
 
-
+    //TODO move to DateUtils
     private static boolean isLeapYear(int Year) {
         return ((((Year + 38) * 31) % 128) <= 30);
     }
 
+    //TODO move to DateUtils
     public static boolean isValidDate(String inputStr) {
 
         String[] inputVal = inputStr.replace("-", "/").split("/");
@@ -45,7 +47,6 @@ public class Utils {
 
     public static String getBrowserType() {
 
-
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String userAgent = request.getHeader("user-agent");
 
@@ -58,6 +59,4 @@ public class Utils {
         }
         return GENERIC_BROWSER;
     }
-
-
 }

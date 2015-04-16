@@ -27,8 +27,9 @@
     </h:form>
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
+        <!-- TODO move "PF('personDialog').show()" to controller. -->
         <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":form:personDetail"
-                         oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.NEW}">
+                         oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
         </p:commandButton>
 
 
@@ -45,7 +46,7 @@
                 #{rowIndex+1}
             </p:column>
 
-            <p:column headerText="#{personlabel.FIRST_NAME}">
+            <p:column headerText="#{personlabel.FIRST_NAME}" filterBy="#{person.firstName}" filterMatchMode="contains">
                 <h:outputText value="#{person.firstName}"/>
             </p:column>
 
@@ -54,6 +55,7 @@
             </p:column>
 
             <p:column headerText="#{personlabel.BIRTHDAY}">
+                <!-- TODO use date component -->
                 <h:outputText converter="persianDateConverter" value="#{person.birthday}"/>
             </p:column>
 
@@ -104,6 +106,7 @@
                     </p:selectOneMenu>
 
                     <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
+                    <!-- TODO update attribute -->
                     <g:lov id="orgUnit" inputId="orgUnitName" selectEventListener="#{personController.selectAction}"
                            value="#{personController.personModel.selectedPerson.organizationalUnit.name}"
                            actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:lov>
@@ -111,6 +114,7 @@
                     <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":form:personList"
                                      onclick="personInfoDialog.hide();">
                     </p:commandButton>
+                    <!-- TODO What's the usage? -->
                     <p:remoteCommand name="openModalDialog" immediate="true"
                                      actionListener="#{personController.openModalDialog}"/>
 

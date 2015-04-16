@@ -11,6 +11,7 @@ import javax.faces.event.AjaxBehaviorEvent;
 /**
  * Created by h.rostami on 2015/03/11.
  */
+//TODO review whole design of LOV
 @FacesComponent(value="gazelleLovComponent")
 public class GazelleLovComponent extends UINamingContainer {
 
@@ -19,5 +20,4 @@ public class GazelleLovComponent extends UINamingContainer {
         MethodExpression eventListener = (MethodExpression) getAttributes().get("selectEventListener");
         eventListener.invoke(context.getELContext(), new Object[] { event });
     }
-
 }

@@ -1,6 +1,6 @@
 package com.pooyaco.person.dto;
 
-import com.pooyaco.gazelle.dto.PagingDto;
+import com.pooyaco.gazelle.dto.Dto;
 
 import java.util.Date;
 
@@ -11,7 +11,7 @@ import java.util.Date;
  * Time: 02:55 م
  * To change this template use File | Settings | File Templates.
  */
-public class PersonDto extends PagingDto {
+public class PersonDto extends Dto {
     private String firstName;
     private String lastName;
     private Date birthday;

@@ -9,7 +9,6 @@ import org.primefaces.util.HTML;
 
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
 import java.io.IOException;
 
 /**
@@ -17,10 +16,13 @@ import java.io.IOException;
  */
 public class GazelleInputTextRenderer extends InputTextRenderer {
 
+    //TODO move this in GazelleInputText
     protected enum ComponentTypes {
 
-        date, text,number;
+        //TODO move date to a new component
+        date, text, number;
 
+        //TODO remove
         String toString;
 
         ComponentTypes(String toString) {
@@ -36,6 +38,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
     }
 
 
+    //TODO call super.encodeMarkup
     @Override
     public void encodeMarkup(FacesContext context, InputText inputText) throws IOException {
         ResponseWriter writer = context.getResponseWriter();
@@ -59,6 +62,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
         PersianDateConverter persianDateConverter = new PersianDateConverter();
         RequestContext requestContext = RequestContext.getCurrentInstance();
         if (ComponentTypes.date.toString().equals(input.getComponentType())) {
+            //TODO pass clientId
             requestContext.execute("dateInitialize();");
             input.setConverter(persianDateConverter);
         } else if (ComponentTypes.number.toString().equals(input.getComponentType()))

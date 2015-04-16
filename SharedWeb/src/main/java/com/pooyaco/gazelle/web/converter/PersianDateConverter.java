@@ -16,7 +16,7 @@ import java.util.Date;
 @FacesConverter("persianDateConverter")
 public class PersianDateConverter implements Converter {
 
-    public static final String SEPERATOR = "/";
+    public static final String SEPARATOR = "/";
 
     public PersianDateConverter() {
     }
@@ -25,16 +25,16 @@ public class PersianDateConverter implements Converter {
     public Object getAsObject(FacesContext facesContext,
                               UIComponent uiComponent, String param) {
         try {
-            if (param.length() == 0 || param.equals("__" + SEPERATOR + "__" + SEPERATOR + "____") || param.equals("____" + SEPERATOR + "__" + SEPERATOR + "__"))
+            if (param.length() == 0 || param.equals("__" + SEPARATOR + "__" + SEPARATOR + "____") || param.equals("____" + SEPARATOR + "__" + SEPARATOR + "__"))
                 return null;
 
-            DateFormat dateFormat = new SimpleDateFormat("yyyy" + SEPERATOR + "MM" + SEPERATOR + "dd");
+            DateFormat dateFormat = new SimpleDateFormat("yyyy" + SEPARATOR + "MM" + SEPARATOR + "dd");
             SimplePersianCalendar simplePersianCalendar = new SimplePersianCalendar();
             if (!Utils.isValidDate(param)) {
                 //TODO Add message
                 return null;
             }
-            String[] params = param.split(SEPERATOR);
+            String[] params = param.split(SEPARATOR);
             if (Utils.getBrowserType().equals(Utils.MICROSOFT_IE)) {
                 simplePersianCalendar.setDateFields(Integer.parseInt(params[2]),
                         Integer.parseInt(params[1]) - 1,
@@ -57,7 +57,7 @@ public class PersianDateConverter implements Converter {
                 miladiDay = "0" + miladiDay;
 
             java.util.Date miladiDate =
-                    dateFormat.parse(miladiYear + SEPERATOR + miladiMonth + SEPERATOR + miladiDay);
+                    dateFormat.parse(miladiYear + SEPARATOR + miladiMonth + SEPARATOR + miladiDay);
             return miladiDate;
 
         } catch (ConverterException ce) {
@@ -81,11 +81,11 @@ public class PersianDateConverter implements Converter {
 
             if (obj instanceof Date) {
                 selectedDate = (Date) obj;
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy" + SEPERATOR + "MM" + SEPERATOR + "dd");
-                inputVal = simpleDateFormat.format(selectedDate).split(SEPERATOR);
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy" + SEPARATOR + "MM" + SEPARATOR + "dd");
+                inputVal = simpleDateFormat.format(selectedDate).split(SEPARATOR);
             }
             if (obj instanceof String) {
-                inputVal = ((String) obj).split(SEPERATOR);
+                inputVal = ((String) obj).split(SEPARATOR);
             }
             DateFields dateFields;
             SimplePersianCalendar simplePersianCalendar = new SimplePersianCalendar();
@@ -102,12 +102,12 @@ public class PersianDateConverter implements Converter {
             dateFields = simplePersianCalendar.getDateFields();
             if (Utils.getBrowserType().equals(Utils.MICROSOFT_IE)) {
                 retVal = String.valueOf(dateFields.getDay() + 100).substring(1);
-                retVal = retVal.concat(SEPERATOR).concat(String.valueOf(dateFields.getMonth() + 1 + 100).substring(1));
-                retVal = retVal.concat(SEPERATOR).concat(String.valueOf(dateFields.getYear()));
+                retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getMonth() + 1 + 100).substring(1));
+                retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getYear()));
             } else {
                 retVal = String.valueOf(dateFields.getYear());
-                retVal = retVal.concat(SEPERATOR).concat(String.valueOf(dateFields.getMonth() + 1 + 100).substring(1));
-                retVal = retVal.concat(SEPERATOR).concat(String.valueOf(dateFields.getDay() + 100).substring(1));
+                retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getMonth() + 1 + 100).substring(1));
+                retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getDay() + 100).substring(1));
             }
 
             return retVal;

@@ -1,3 +1,4 @@
+//TODO add clientId as parameter
 function dateInitialize() {
     $(".date_picker").datepicker({
         dateFormat: 'yy/mm/dd',

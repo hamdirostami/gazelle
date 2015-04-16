@@ -26,6 +26,7 @@ import javax.inject.Named;
  */
 @Named
 @ViewScoped
+//TODO remove
 public class PersonBaseController extends BaseController {
 
     @Inject
