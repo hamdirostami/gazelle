@@ -20,12 +20,16 @@
         </resource-bundle>
         <resource-bundle>
             <base-name>com.pooyaco.person.web.bundle.PersonBundle_en</base-name>
-            <base-name>messages</base-name>
-            <var>message</var>
+            <var>personlabel</var>
+        </resource-bundle>
+
+        <resource-bundle>
+            <base-name>com.pooyaco.gazelle.web.bundle.GazelleLoginLabelsBundle_en</base-name>
+            <var>loginlabels</var>
         </resource-bundle>
         <resource-bundle>
-            <base-name>person_labels</base-name>
-            <var>personlabel</var>
+            <base-name>com.pooyaco.gazelle.web.bundle.GazelleLoginMessagesBundle_en</base-name>
+            <var>loginmessages</var>
         </resource-bundle>
 
         <action-listener>org.primefaces.application.DialogActionListener</action-listener>
