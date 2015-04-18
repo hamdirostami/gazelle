@@ -10,6 +10,7 @@ import com.pooyaco.gazelle.dto.Dto;
  * To change this template use File | Settings | File Templates.
  */
 public class CityDto extends Dto {
+    private long id;
     private String name;
     private String province;
 
@@ -33,4 +34,21 @@ public class CityDto extends Dto {
         this.province = province;
     }
 
+    @Override
+    public Object getPK() {
+        return getId();
+    }
+
+    @Override
+    public void setPK(Object pk) {
+        setId((Long) pk);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 }

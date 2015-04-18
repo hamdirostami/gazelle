@@ -10,6 +10,6 @@ import com.pooyaco.gazelle.si.BaseService;
  * Time: 02:42 م
  * To change this template use File | Settings | File Templates.
  */
-public interface PersonService<D extends PersonDto> extends BaseService<D> {
+public interface PersonService extends BaseService<PersonDto> {
 
 }

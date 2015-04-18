@@ -12,6 +12,7 @@ import java.util.Date;
  * To change this template use File | Settings | File Templates.
  */
 public class PersonDto extends Dto {
+    private long id;
     private String firstName;
     private String lastName;
     private Date birthday;
@@ -97,5 +98,23 @@ public class PersonDto extends Dto {
 
     public void setOrganizationalUnit(OrganizationalUnitDto organizationalUnit) {
         this.organizationalUnit = organizationalUnit;
+    }
+
+    @Override
+    public Object getPK() {
+        return getId();
+    }
+
+    @Override
+    public void setPK(Object pk) {
+        setId((Long) pk);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

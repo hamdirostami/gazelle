@@ -10,6 +10,7 @@ import com.pooyaco.gazelle.dto.Dto;
  * To change this template use File | Settings | File Templates.
  */
 public class OrganizationalUnitDto extends Dto {
+    private long id;
     private String code;
     private String departmentCode;
     private String name;
@@ -40,5 +41,23 @@ public class OrganizationalUnitDto extends Dto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public Object getPK() {
+        return getId();
+    }
+
+    @Override
+    public void setPK(Object pk) {
+        setId((Long) pk);
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

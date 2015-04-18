@@ -31,7 +31,7 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
     //TODO load from DB.
     public D getRowData(String rowKey) {
         for (D pagingDto : rows) {
-            if (pagingDto.getId().equals(rowKey))
+            if (pagingDto.getPK().equals(rowKey))
                 return pagingDto;
         }
 
@@ -40,7 +40,7 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
 
     @Override
     public Object getRowKey(D dto) {
-        return dto.getId();
+        return dto.getPK();
     }
 
     @Override

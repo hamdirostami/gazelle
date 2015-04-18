@@ -62,7 +62,7 @@ public class PersonController extends PersonBaseController {
 
 
     public void update() {
-        if (personModel.getSelectedPerson().getId() == null) {
+        if (personModel.getSelectedPerson().getPK() == null) {
             personService.persist(personModel.getSelectedPerson());
 
         } else

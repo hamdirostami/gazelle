@@ -16,6 +16,6 @@ import javax.inject.Named;
  * To change this template use File | Settings | File Templates.
  */
 @Named
-public class PersonServiceImpl extends BaseServiceImpl<PersonDto, Person, PersonDao> implements PersonService<PersonDto> {
+public class PersonServiceImpl extends BaseServiceImpl<PersonDto, Person, PersonDao> implements PersonService {
 
 }
