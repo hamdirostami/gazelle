@@ -31,8 +31,17 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.0.3.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.3.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:3.2.3.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:3.2.8.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:3.2.3.RELEASE" />
           <element id="library" level="project" name="Maven: com.ghasemkiani:persiancalendar:1.0" />
+          <element id="archive" name="SharedDTO-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="SharedDTO" />
+          </element>
+          <element id="archive" name="PersonSI-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="PersonSI" />
           <element id="archive" name="SharedDTO-1.0-SNAPSHOT.jar">
             <element id="module-output" name="SharedDTO" />
           </element>

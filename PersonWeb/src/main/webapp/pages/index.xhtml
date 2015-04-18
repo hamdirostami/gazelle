@@ -20,6 +20,11 @@
 
 </h:head>
 <h:body>
+    <h:form id="logoutform">
+        <div style="float: left">
+            <p:commandButton id="logoutbutton" ajax="false" action="#{authenticationBean.doLogout}" value="#{loginlabels.LOGOUT}"/>
+        </div>
+    </h:form>
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
         <!-- TODO move "PF('personDialog').show()" to controller. -->
@@ -27,9 +32,11 @@
                          oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
         </p:commandButton>
 
+
+
         <br/><br/>
         <p:dataTable id="personList" var="person" update=":form:personDetail" lazy="true"
-                     value="#{personController.personModel.persons}" selectionMode="single" rowKey="#{person.id}"
+                     value="#{personController.personModel.persons}" selectionMode="single" rowKey="#{person.PK}"
                      rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{currentPage} #{label.FROM} {totalPages}"
@@ -94,8 +101,8 @@
                                  value="#{personController.personModel.selectedPerson.birthday}"/>
 
                     <h:outputText value="#{personlabel.CITY}"/>
-                    <p:selectOneMenu id="city" value="#{personController.personModel.selectedPerson.city.id}">
-                        <f:selectItems value="#{personController.personModel.cities}" var="city" itemLabel="#{city.name}" itemValue="#{city.id}" />
+                    <p:selectOneMenu id="city" value="#{personController.personModel.selectedPerson.city.PK}">
+                        <f:selectItems value="#{personController.personModel.cities}" var="city" itemLabel="#{city.name}" itemValue="#{city.PK}" />
                     </p:selectOneMenu>
 
                     <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>

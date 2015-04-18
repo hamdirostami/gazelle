@@ -20,7 +20,7 @@
 <h:body>
     <h:form id="orgUnitForm">
         <p:dataTable id="organizationalUnitList" var="orgUnit" value="#{personBaseController.personLovModel.orgUnits}"
-                         selectionMode="single" rowKey="#{orgUnit.id}"
+                         selectionMode="single" rowKey="#{orgUnit.PK}"
                          rows="10">
 
             <!-- TODO remove -->

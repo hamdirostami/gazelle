@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <base  href="#{personController.basePath}" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
+    <title>سیستم جدید شرکت پویا</title>
+</h:head>
+<h:body>
+    <h:form id="form" prependId="false">
+        <p:growl autoUpdate="true" globalOnly="true"/>
+        <h1 align="center" style="font-family: NeoSans">به سیستم جدید شرکت پویا خوش آمدید</h1>
+        <div class="middle">
+            <h5 align="center" style="font-family: NeoSans">لطفا برای ورود نام کاربری و کلمه عبور خود را وارد نمایید:</h5>
+            <div class="ui-grid ui-grid-responsive inner">
+                <div class="ui-grid-row"></div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4 username-label"><p:outputLabel value="#{loginlabels.USERNAME}" for="j_username"/>:</div>
+                    <div class="ui-grid-col-2">
+                        <p:inputText id="j_username" label="j_username" value="#{authenticationBean.username}" required="true" requiredMessage="#{loginmessages.USERNAME_IS_MANDATORY}"/>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-9"><p:message for="j_username"/></div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-4 password-label"><p:outputLabel value="#{loginlabels.PASSWORD}" for="j_password"/> :</div>
+                    <div class="ui-grid-col-2">
+                        <p:password id="j_password" label="j_password" value="#{authenticationBean.password}" required="true" requiredMessage="#{loginmessages.PASSWORD_IS_MANDATORY}"/>
+                    </div>
+                </div>
+                <div class="ui-grid-row">
+                    <div class="ui-grid-col-9"><p:message for="j_password"/></div>
+                </div>
+                <div class="ui-grid-row" style="margin-top: 10px;">
+                    <div class="ui-grid-col-4"></div>
+                    <div class="ui-grid-col-2"><p:commandButton id="loginbutton" ajax="false" action="#{authenticationBean.doLogin}" update="form" value="#{loginlabels.LOGIN}" styleClass="login-button"/></div>
+                    <div class="ui-grid-col-2"></div>
+                    <div class="ui-grid-col-1"><p:commandButton id="clearbutton" type="reset" ajax="false" action="#{authenticationBean.doClear}" update="form" value="#{loginlabels.CLEAR}" styleClass="clear-button" immediate="true"/></div>
+                </div>
+                <div class="ui-grid-row" style="margin-top: 10px;" align="center">
+                    <p:message rendered="#{param['status'] eq 'error'}" for="loginbutton">
+                        <p:outputLabel  value="#{loginmessages.INVALID_USERNAME_OR_PASSWORD}" style="color: #ff0000"/>
+                    </p:message>
+                    <p:message rendered="#{param['status'] eq 'logout'}" for="loginbutton">
+                        <p:outputLabel value="#{loginmessages.LOGOUT_SUCCESSFUL_MESSAGE}" style="color: green"/>
+                    </p:message>
+                </div>
+            </div>
+        </div>
+
+    </h:form>
+</h:body>
+</html>
