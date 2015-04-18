@@ -3,28 +3,10 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:g="http://java.sun.com/jsf/composite/gazelle">
-<h:head>
-    <base href="#{personController.basePath}"/>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="css/main.css"/>
-    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
-
-    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc.js"></script>
-    <script type="text/javascript" src="js/calendar/calendar.all.js"></script>
-    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
-    <script type="text/javascript" src="js/calendar/jquery.maskedinput.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-
-    <title>#{personlabel.PERSON_LIST}</title>
-
-</h:head>
-<h:body>
-    <h:form id="logoutform">
-        <div style="float: left">
-            <p:commandButton id="logoutbutton" ajax="false" action="#{authenticationBean.doLogout}" value="#{loginlabels.LOGOUT}"/>
-        </div>
-    </h:form>
+<ui:composition template="../templates/layout.xhtml">
+<ui:define name="content">
     <h:form id="form">
         <p:growl id="growl" showDetail="true" life="5000"/>
         <!-- TODO move "PF('personDialog').show()" to controller. -->
@@ -101,7 +83,7 @@
                                  value="#{personController.personModel.selectedPerson.birthday}"/>
 
                     <h:outputText value="#{personlabel.CITY}"/>
-                    <p:selectOneMenu id="city" value="#{personController.personModel.selectedPerson.city.PK}">
+                    <p:selectOneMenu id="city" value="#{personController.personModel.selectedPerson.city.id}">
                         <f:selectItems value="#{personController.personModel.cities}" var="city" itemLabel="#{city.name}" itemValue="#{city.PK}" />
                     </p:selectOneMenu>
 
@@ -133,5 +115,6 @@
         </p:dialog>
 
     </h:form>
-</h:body>
+</ui:define>
+</ui:composition>
 </html>

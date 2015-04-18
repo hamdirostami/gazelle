@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <f:facet name="first">
+        <meta http-equiv="X-UA-Compatible" content="EmulateIE8"/>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+        <title></title>
+    </f:facet>
+    <f:facet name="last">
+        <link rel="stylesheet" type="text/css" href="css/main.css"/>
+        <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+    </f:facet>
+    <base href="#{personController.basePath}"/>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="js/calendar/calendar.all.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</h:head>
+
+<p:layout fullPage="true" style="text-align:right;float:right; border:1px;">
+
+    <p:layoutUnit position="north" size="152" resizable="false" closable="false" collapsible="false"
+                  style="overflow:hidden;">
+        <ui:include src="header.xhtml"/>
+        <h:form>
+            <!--<div>
+                <p:toolbar style="bottom:0;">
+                    <p:toolbarGroup align="left">
+                        <div style="float:left;">
+                            <p:commandButton id="exit" action="#"  value="Logout"/>
+                            <p:tooltip for="exit" value="Logout"/>
+                        </div>
+                    </p:toolbarGroup>
+                    <p:toolbarGroup align="right">
+                        <div style="width:100%">
+                            <p:breadCrumb model="#{breadCrumbBean.model}" id="bc1" style=""/>
+                        </div>
+                    </p:toolbarGroup>
+                </p:toolbar>
+            </div>-->
+        </h:form>
+    </p:layoutUnit>
+
+    <p:layoutUnit position="center">
+        <div style="overflow: auto; width: 100%; height: 100%; text-align:right !important;">
+            <ui:insert name="content">
+                No Content
+            </ui:insert>
+        </div>
+    </p:layoutUnit>
+</p:layout>
+
+<p:layoutUnit position="south">
+    <h:outputText value="Powered by Pooyaco.Inc"/>
+</p:layoutUnit>
+
+</html>
