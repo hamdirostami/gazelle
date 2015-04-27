@@ -5,19 +5,20 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:g="http://java.sun.com/jsf/composite/gazelle">
+
 <ui:composition template="../templates/layout.xhtml">
 <ui:define name="content">
+    <p:growl id="growl" showDetail="true" life="5000"/>
     <h:form id="form">
-        <p:growl id="growl" showDetail="true" life="5000"/>
         <!-- TODO move "PF('personDialog').show()" to controller. -->
-        <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":form:personDetail"
+        <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":personForm:personDetail"
                          oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
         </p:commandButton>
 
 
 
         <br/><br/>
-        <p:dataTable id="personList" var="person" update=":form:personDetail" lazy="true"
+        <p:dataTable id="personList" var="person" lazy="true"
                      value="#{personController.personModel.persons}" selectionMode="single" rowKey="#{person.PK}"
                      rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -50,7 +51,7 @@
             </p:column>
 
             <p:column style="width:42px;text-align: center" headerText="#{label.EDIT}">
-                <p:commandButton process="@this" update=":form:personDetail" oncomplete="PF('personDialog').show()"
+                <p:commandButton process="@this" update=":personForm:personDetail" oncomplete="PF('personDialog').show()"
                                  icon="ui-icon-pencil" title="#{label.EDIT}">
                     <f:setPropertyActionListener value="#{person}"
                                                  target="#{personController.personModel.selectedPerson}"/>
@@ -65,15 +66,16 @@
             </p:column>
 
         </p:dataTable>
-
-        <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true"
+    </h:form>
+        <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true" appendTo="@(body)"
                   showEffect="fade"
                   hideEffect="fade" resizable="false">
+            <h:form id="personForm">
             <p:outputPanel id="personDetail" style="text-align:center;">
                 <p:panelGrid styleClass="no-border" columns="2" columnClasses="label,value">
 
                     <h:outputText value="#{personlabel.FIRST_NAME}"/>
-                    <p:inputText value="#{personController.personModel.selectedPerson.firstName}" componentType="text"/>
+                    <p:inputText id="firstName" value="#{personController.personModel.selectedPerson.firstName}" componentType="text"/>
 
                     <h:outputText value="#{personlabel.LAST_NAME}"/>
                     <p:inputText value="#{personController.personModel.selectedPerson.lastName}" onkeyup=""/>
@@ -93,8 +95,7 @@
                            value="#{personController.personModel.selectedPerson.organizationalUnit.name}"
                            actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:lov>
 
-                    <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":form:personList"
-                                     onclick="personInfoDialog.hide();">
+                    <p:commandButton value="#{label.SAVE}"  action="#{personController.update}" update="growl">
                     </p:commandButton>
                     <!-- TODO What's the usage? -->
                     <p:remoteCommand name="openModalDialog" immediate="true"
@@ -102,19 +103,20 @@
 
                 </p:panelGrid>
             </p:outputPanel>
+            </h:form>
         </p:dialog>
-        <p:dialog modal="true" global="true" showEffect="fade" hideEffect="explode" widgetVar="deleteDialog">
+        <p:dialog modal="true" appendTo="@(body)"  global="true"  showEffect="fade" hideEffect="explode" widgetVar="deleteDialog">
 
             <p:outputLabel value="#{label.DELETE_CONFIRM}"></p:outputLabel>
             <br></br><br></br>
             <p:commandButton value="#{label.YES}" immediate="true" action="#{personController.delete}"
                              oncomplete="PF('deleteDialog').hide()"
-                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form:personList,growl"/>
+                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form:personList"/>
             <p:commandButton value="#{label.NO}" immediate="true" oncomplete="PF('deleteDialog').hide()" styleClass="ui-confirmdialog-no"
                              icon="ui-icon-close"/>
         </p:dialog>
 
-    </h:form>
+
 </ui:define>
 </ui:composition>
 </html>
