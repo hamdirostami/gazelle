@@ -15,7 +15,7 @@
 <composite:implementation>
         <p:inputText id="#{cc.attrs.inputId}" value="#{cc.attrs.value}"/>
         <p:commandButton immediate="true" process="@this"  icon="ui-icon-search" actionListener="#{cc.attrs.actionListener}">
-            <p:ajax event="dialogReturn" listener="#{cc.selectEventListener}" update=":form:#{cc.attrs.id}:#{cc.attrs.inputId}"/>
+            <p:ajax event="dialogReturn" listener="#{cc.selectEventListener}" update=":personForm:#{cc.attrs.id}:#{cc.attrs.inputId}"/>
         </p:commandButton>
 </composite:implementation>
 </html>

@@ -71,7 +71,14 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public List<D> getAll() {
-        return null;
+        List<E> listEntity = dao.getAll();
+        List<D> listDto = new ArrayList<D>();
+        for (E entity : listEntity) {
+            D dto = createDtoInstance();
+            getMapper().map(entity, dto);
+            listDto.add(dto);
+        }
+        return listDto;
     }
 
     @Override

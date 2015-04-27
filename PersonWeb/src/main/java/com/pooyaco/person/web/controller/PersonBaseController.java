@@ -46,7 +46,7 @@ public class PersonBaseController extends BaseController {
     }
 
     private void getAllOrgUnits() {
-        personLovModel.setOrgUnits(organizationalUnitService.getAll(50, 0));
+        personLovModel.setOrgUnits(organizationalUnitService.getAll());
     }
 
 
