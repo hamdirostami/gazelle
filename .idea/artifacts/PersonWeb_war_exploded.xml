@@ -97,6 +97,9 @@
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
         </element>
       </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/PersonWeb/target/MANIFEST.MF" />
+      </element>
       <element id="javaee-facet-resources" facet="PersonWeb/web/Web" />
     </root>
   </artifact>

@@ -560,7 +560,7 @@ have any effects */
     float:right;
     text-align:right;
     padding:0;
-    width:99%;
+    width:100%;
     direction:rtl !important;
 }
 
@@ -581,7 +581,7 @@ have any effects */
     float:right;
     direction:rtl !important;
     width:100%;
-
+    right: 0;
 }
 
 .ui-layout-pane {
@@ -616,6 +616,15 @@ body{
 .ui-menu .ui-menuitem-text {
     float: right;
     direction:rtl !important;
+}
+
+.ui-menubar{
+    float: right !important;
+    margin-left: 0px !important;
+}
+
+.ui-menuitem-text {
+    float: right !important;
 }
 
 .save-pdf-icon{
@@ -901,4 +910,13 @@ for tabs of dialog,
     border: 1px solid #E78F08;
     color: #F97F09;
     text-align: right;
+}
+
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;
+}
+
+.ui-layout-unit-content {
+    overflow:visible !important;
 }
