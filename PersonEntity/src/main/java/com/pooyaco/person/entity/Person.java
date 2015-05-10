@@ -25,7 +25,9 @@ public class Person extends BaseEntity implements AuditableEntity {
     private int version = 0;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator="PERSON_SEQ")
+    @SequenceGenerator(name="PERSON_SEQ",sequenceName="PERSON_SEQ", allocationSize=1)
+
     public Long getId() {
         return id;
     }

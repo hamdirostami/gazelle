@@ -13,7 +13,7 @@
 
     <pe:masterDetail id="masterDetail" showAllBreadcrumbItems="true">
     <pe:masterDetailLevel level="1">
-        <p:dataTable id="persons" value="#{personController.personModel.persons}" var="persons">
+        <p:dataTable id="persons" value="#{personController.model.persons}" var="persons">
             <p:column headerText="Name">
                 <p:commandLink value="#{persons.firstName}">
                     <pe:selectDetailLevel contextValue="#{persons}"/>

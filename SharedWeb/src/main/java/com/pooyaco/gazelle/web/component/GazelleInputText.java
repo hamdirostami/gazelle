@@ -8,22 +8,11 @@ import org.primefaces.component.inputtext.InputText;
 public class GazelleInputText extends InputText {
 
     protected enum Properties {
+        componentType
+    }
 
-        componentType;
-
-        //TODO usage? remove is unused.
-        String toString;
-
-        Properties(String toString) {
-            this.toString = toString;
-        }
-
-        Properties() {
-        }
-
-        public String toString() {
-            return ((this.toString != null) ? this.toString : super.toString());
-        }
+    protected enum ComponentTypes {
+         text, number
     }
 
     public GazelleInputText() {
@@ -31,8 +20,8 @@ public class GazelleInputText extends InputText {
     }
 
     //TODO change type to ComponentType enum
-    public java.lang.String getComponentType() {
-        return (java.lang.String) getStateHelper().eval(Properties.componentType, null);
+    public String getComponentType() {
+        return (String) getStateHelper().eval(Properties.componentType, null);
     }
 
     public void setComponentType(String componentType) {

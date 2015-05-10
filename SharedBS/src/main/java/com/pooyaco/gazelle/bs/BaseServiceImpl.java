@@ -2,7 +2,6 @@ package com.pooyaco.gazelle.bs;
 
 import com.pooyaco.gazelle.da.BaseDao;
 import com.pooyaco.gazelle.dto.Dto;
-import com.pooyaco.gazelle.entity.AuditableEntity;
 import com.pooyaco.gazelle.entity.Entity;
 import com.pooyaco.gazelle.si.BaseService;
 import org.dozer.Mapper;
@@ -11,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.inject.Inject;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -64,14 +62,13 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
     }
 
     @Override
-    public D find(Long id) {
-        //TODO throw new UnsupportedOperationException instead of return null
-        return null;
+    public D find(Object id) {
+        return (D)dao.find(id);
     }
 
     @Override
     public List<D> getAll() {
-        List<E> listEntity = dao.getAll();
+        List<E> listEntity = dao.fetchAll();
         List<D> listDto = new ArrayList<D>();
         for (E entity : listEntity) {
             D dto = createDtoInstance();
@@ -83,7 +80,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public List<D> getAll(int maxResult, int from) {
-        List<E> listEntity = dao.getAll(maxResult, from);
+        List<E> listEntity = dao.fetch(maxResult, from);
         List<D> listDto = new ArrayList<D>();
         for (E entity : listEntity) {
             D dto = createDtoInstance();
@@ -95,7 +92,7 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public List<D> getAll(int maxResult, int from, Map<String,Object> filters) {
-        List<E> listEntity = dao.getAll(maxResult, from, filters);
+        List<E> listEntity = dao.fetch(maxResult, from, filters);
         List<D> listDto = new ArrayList<D>();
         for(E entity:listEntity) {
             D dto = createDtoInstance();
@@ -127,11 +124,11 @@ public abstract class BaseServiceImpl<D extends Dto, E extends Entity, DAO exten
 
     @Override
     public Long getCount() {
-        return dao.getCount();
+        return dao.count();
     }
 
     @Override
     public Long getCount(Map<String,Object> filters) {
-        return dao.getCount(filters);
+        return dao.count(filters);
     }
 }

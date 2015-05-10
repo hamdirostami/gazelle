@@ -8,112 +8,114 @@
       xmlns:g="http://java.sun.com/jsf/composite/gazelle">
 
 <f:view>
-        <p:growl id="growl" showDetail="true" life="5000"/>
-        <h:form id="form">
-            <!-- TODO move "PF('personDialog').show()" to controller. -->
-            <p:commandButton process="@this" immediate="true" actionListener="#{personController.clear}" update=":personForm:personDetail"
-                             oncomplete="PF('personDialog').show()" icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
-            </p:commandButton>
+    <p:growl id="growl" showDetail="true" life="5000"/>
+    <h:form id="form">
+        <p:commandButton process="@this" immediate="true" actionListener="#{personController.initializePerson}"
+                         update=":personForm:personDetail"
+                         icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
+        </p:commandButton>
 
-            <br/><br/>
-            <p:dataTable id="personList" var="person" lazy="true"
-                         value="#{personController.personModel.persons}" selectionMode="single" rowKey="#{person.PK}"
-                         rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         currentPageReportTemplate="{currentPage} #{label.FROM} {totalPages}"
-                         rowsPerPageTemplate="5,10,15">
-                <p:column headerText="#{label.ROW}">
-                    #{rowIndex+1}
-                </p:column>
+        <br/><br/>
+        <p:dataTable id="personList" var="person" lazy="true"
+                     value="#{personController.model.persons}" selectionMode="single" rowKey="#{person.PK}"
+                     rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
+                     paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{currentPage} #{label.FROM} {totalPages}"
+                     rowsPerPageTemplate="5,10,15">
+            <p:column headerText="#{label.ROW}">
+                #{rowIndex+1}
+            </p:column>
 
-                <p:column headerText="#{personlabel.FIRST_NAME}" filterBy="#{person.firstName}" filterMatchMode="contains">
-                    <h:outputText value="#{person.firstName}"/>
-                </p:column>
+            <p:column headerText="#{personlabel.FIRST_NAME}" filterBy="#{person.firstName}" filterMatchMode="contains">
+                <h:outputText value="#{person.firstName}"/>
+            </p:column>
 
-                <p:column headerText="#{personlabel.LAST_NAME}">
-                    <h:outputText value="#{person.lastName}"/>
-                </p:column>
+            <p:column headerText="#{personlabel.LAST_NAME}">
+                <h:outputText value="#{person.lastName}"/>
+            </p:column>
 
-                <p:column headerText="#{personlabel.BIRTHDAY}">
-                    <!-- TODO use date component -->
-                    <h:outputText converter="persianDateConverter" value="#{person.birthday}"/>
-                </p:column>
+            <p:column headerText="#{personlabel.BIRTHDAY}">
+                <g:pooyaDate value="#{person.birthday}" readOnly="true"/>
+            </p:column>
 
-                <p:column headerText="#{personlabel.CITY}">
-                    <h:outputText value="#{person.city.name}"/>
-                </p:column>
+            <p:column headerText="#{personlabel.CITY}">
+                <h:outputText value="#{person.city.name}"/>
+            </p:column>
 
-                <p:column headerText="#{personlabel.ORGANIZATIONAL_UNIT}">
-                    <h:outputText value="#{person.organizationalUnit.name}"/>
-                </p:column>
+            <p:column headerText="#{personlabel.ORGANIZATIONAL_UNIT}">
+                <h:outputText value="#{person.organizationalUnit.name}"/>
+            </p:column>
 
-                <p:column style="width:42px;text-align: center" headerText="#{label.EDIT}">
-                    <p:commandButton process="@this" update=":personForm:personDetail" oncomplete="PF('personDialog').show()"
-                                     icon="ui-icon-pencil" title="#{label.EDIT}">
-                        <f:setPropertyActionListener value="#{person}"
-                                                     target="#{personController.personModel.selectedPerson}"/>
+            <p:column style="width:42px;text-align: center" headerText="#{label.EDIT}">
+                <p:commandButton process="@this" update=":personForm:personDetail"
+                                 oncomplete="PF('personDialog').show()"
+                                 icon="ui-icon-pencil" title="#{label.EDIT}">
+                    <f:setPropertyActionListener value="#{person}"
+                                                 target="#{personController.model.selectedPerson}"/>
+                </p:commandButton>
+            </p:column>
+            <p:column style="width:32px;text-align: center" headerText="#{label.DELETE}">
+                <p:commandButton process="@this" oncomplete="PF('deleteDialog').show()" icon="ui-icon-trash"
+                                 title="#{label.DELETE}">
+                    <f:setPropertyActionListener value="#{person}"
+                                                 target="#{personController.model.selectedPerson}"/>
+                </p:commandButton>
+            </p:column>
+
+        </p:dataTable>
+    </h:form>
+    <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true"
+              appendTo="@(body)"
+              showEffect="fade"
+              hideEffect="fade" resizable="false">
+        <h:form id="personForm">
+
+            <p:outputPanel id="personDetail" styleClass="container">
+                    <div class="r_field margin_right">
+                    <h:outputText value="#{personlabel.FIRST_NAME}"/>
+                    <p:inputText id="firstName" value="#{personController.model.selectedPerson.firstName}"
+                            />
+                    </div>
+                <div class="r_field">
+                    <h:outputText value="#{personlabel.LAST_NAME}"/>
+                    <p:inputText value="#{personController.model.selectedPerson.lastName}" onkeyup=""/>
+                </div>
+                <div class="r_field margin_right">
+                    <h:outputText value="#{personlabel.BIRTHDAY}"/>
+                    <g:pooyaDate id="birthday" value="#{personController.model.selectedPerson.birthday}"/>
+                </div>
+                <div class="r_field">
+                    <h:outputText value="#{personlabel.CITY}"/>
+                    <p:selectOneMenu id="city" value="#{personController.model.selectedPerson.city.id}">
+                        <f:selectItems value="#{personController.model.cities}" var="city"
+                                       itemLabel="#{city.name}" itemValue="#{city.PK}"/>
+                    </p:selectOneMenu>
+                </div>
+                <div class="r_field margin_right">
+                    <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
+                    <g:pooyaLov id="orgUnit" selectEventListener="#{personController.selectAction}"
+                                value="#{personController.model.selectedPerson.organizationalUnit.name}"
+                                update=":personForm:orgUnit:orgUnit"
+                                actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:pooyaLov>
+                </div>
+                <div class="r_field">
+                    <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":growl">
                     </p:commandButton>
-                </p:column>
-                <p:column style="width:32px;text-align: center" headerText="#{label.DELETE}">
-                    <p:commandButton process="@this" oncomplete="PF('deleteDialog').show()" icon="ui-icon-trash"
-                                     title="#{label.DELETE}">
-                        <f:setPropertyActionListener value="#{person}"
-                                                     target="#{personController.personModel.selectedPerson}"/>
-                    </p:commandButton>
-                </p:column>
-
-            </p:dataTable>
+                </div>
+            </p:outputPanel>
         </h:form>
-        <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true" appendTo="@(body)"
-                  showEffect="fade"
-                  hideEffect="fade" resizable="false">
-            <h:form id="personForm">
-                <p:outputPanel id="personDetail" style="text-align:center;">
-                    <p:panelGrid styleClass="no-border" columns="2" columnClasses="label,value">
+    </p:dialog>
+    <p:dialog modal="true" appendTo="@(body)" global="true" showEffect="fade" hideEffect="explode"
+              widgetVar="deleteDialog">
 
-                        <h:outputText value="#{personlabel.FIRST_NAME}"/>
-                        <p:inputText id="firstName" value="#{personController.personModel.selectedPerson.firstName}" componentType="text"/>
-
-                        <h:outputText value="#{personlabel.LAST_NAME}"/>
-                        <p:inputText value="#{personController.personModel.selectedPerson.lastName}" onkeyup=""/>
-
-                        <h:outputText value="#{personlabel.BIRTHDAY}"/>
-                        <p:inputText styleClass="date_picker" componentType="date"
-                                     value="#{personController.personModel.selectedPerson.birthday}"/>
-
-                        <h:outputText value="#{personlabel.CITY}"/>
-                        <p:selectOneMenu id="city" value="#{personController.personModel.selectedPerson.city.id}">
-                            <f:selectItems value="#{personController.personModel.cities}" var="city" itemLabel="#{city.name}" itemValue="#{city.PK}" />
-                        </p:selectOneMenu>
-
-                        <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
-                        <!-- TODO update attribute -->
-                        <g:lov id="orgUnit" inputId="orgUnitName" selectEventListener="#{personController.selectAction}"
-                               value="#{personController.personModel.selectedPerson.organizationalUnit.name}"
-                               actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:lov>
-
-                        <p:commandButton value="#{label.SAVE}"  action="#{personController.update}" >
-                        </p:commandButton>
-                        <!-- TODO What's the usage? -->
-                        <p:remoteCommand name="openModalDialog" immediate="true"
-                                         actionListener="#{personController.openModalDialog}"/>
-
-                    </p:panelGrid>
-                </p:outputPanel>
-            </h:form>
-        </p:dialog>
-        <p:dialog modal="true" appendTo="@(body)"  global="true"  showEffect="fade" hideEffect="explode" widgetVar="deleteDialog">
-
-            <p:outputLabel value="#{label.DELETE_CONFIRM}"></p:outputLabel>
-            <br></br><br></br>
-            <p:commandButton value="#{label.YES}" immediate="true" action="#{personController.delete}"
-                             oncomplete="PF('deleteDialog').hide()"
-                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form:personList"/>
-            <p:commandButton value="#{label.NO}" immediate="true" oncomplete="PF('deleteDialog').hide()" styleClass="ui-confirmdialog-no"
-                             icon="ui-icon-close"/>
-        </p:dialog>
-
-
-
+        <p:outputLabel value="#{label.DELETE_CONFIRM}"></p:outputLabel>
+        <br></br><br></br>
+        <p:commandButton value="#{label.YES}" immediate="true" action="#{personController.delete}"
+                         oncomplete="PF('deleteDialog').hide()"
+                         styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form:personList growl"/>
+        <p:commandButton value="#{label.NO}" immediate="true" oncomplete="PF('deleteDialog').hide()"
+                         styleClass="ui-confirmdialog-no"
+                         icon="ui-icon-close"/>
+    </p:dialog>
 </f:view>
 </html>

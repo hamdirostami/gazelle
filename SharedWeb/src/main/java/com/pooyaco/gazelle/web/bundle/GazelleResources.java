@@ -15,6 +15,8 @@ public enum GazelleResources implements GazelleResourceEnum{
     FROM("از"),
     ROW("رديف"),
     DELETE_CONFIRM("آيا از حذف اطلاعات مطمئن هستيد؟"),
+    SUCCESS_SUMMARY("موفق"),
+    SUCCESS_DETAIL("تراکنش با موفقيت انجام شد."),
     SELECT("انتخاب");
 
     private String value;

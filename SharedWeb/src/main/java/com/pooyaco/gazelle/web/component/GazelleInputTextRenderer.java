@@ -16,27 +16,6 @@ import java.io.IOException;
  */
 public class GazelleInputTextRenderer extends InputTextRenderer {
 
-    //TODO move this in GazelleInputText
-    protected enum ComponentTypes {
-
-        //TODO move date to a new component
-        date, text, number;
-
-        //TODO remove
-        String toString;
-
-        ComponentTypes(String toString) {
-            this.toString = toString;
-        }
-
-        ComponentTypes() {
-        }
-
-        public String toString() {
-            return ((this.toString != null) ? this.toString : super.toString());
-        }
-    }
-
 
     //TODO call super.encodeMarkup
     @Override
@@ -59,13 +38,7 @@ public class GazelleInputTextRenderer extends InputTextRenderer {
         /**
          * add js functions for component types
          */
-        PersianDateConverter persianDateConverter = new PersianDateConverter();
-        RequestContext requestContext = RequestContext.getCurrentInstance();
-        if (ComponentTypes.date.toString().equals(input.getComponentType())) {
-            //TODO pass clientId
-            requestContext.execute("dateInitialize();");
-            input.setConverter(persianDateConverter);
-        } else if (ComponentTypes.number.toString().equals(input.getComponentType()))
+        if(GazelleInputText.ComponentTypes.number.toString().equals(input.getComponentType()))
             writer.writeAttribute("onkeydown", "isNumberKey();", null);
 
         renderPassThruAttributes(context, inputText, HTML.INPUT_TEXT_ATTRS_WITHOUT_EVENTS);

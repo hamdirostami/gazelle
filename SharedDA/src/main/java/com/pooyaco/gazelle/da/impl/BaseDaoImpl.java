@@ -32,28 +32,29 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
     }
 
     public void persist(E entity) {
-        //TODO Use getEntityManager() instead of entityManager
-        entityManager.persist(entity);
+        getEntityManager().persist(entity);
     }
 
     public void remove(E entity) {
-        entityManager.remove(entityManager.merge(entity));
+        getEntityManager().remove(getEntityManager().merge(entity));
     }
 
     public void merge(E entity) {
-        entityManager.merge(entity);
+        getEntityManager().merge(entity);
     }
 
-    public E find(Long id) {
-        return entityManager.find(getEntityClass(), id);
+    public E find(Object id) {
+        return getEntityManager().find(getEntityClass(), id);
     }
 
-    //TODO comment filters
-    public List<E> getAll(int maxResult, int from, Map<String, Object> filters) {
+    /**
+     * this method add filters to query with 'like' command to fetch data
+     */
+    public List<E> fetch(int from, int maxResult, Map<String, Object> filters) {
 
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         Class<E> clazz = getEntityClass();
-        CriteriaQuery<E> query = entityManager.getCriteriaBuilder().createQuery(clazz);
+        CriteriaQuery<E> query = getEntityManager().getCriteriaBuilder().createQuery(clazz);
         Root<E> variableRoot = query.from(getEntityClass());
         for (Map.Entry<String, Object> entry : filters.entrySet()) {
             String key = entry.getKey();
@@ -63,22 +64,22 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
         }
         query.select(variableRoot);
 
-        TypedQuery q = entityManager.createQuery(query);
+        TypedQuery q = getEntityManager().createQuery(query);
         return q.setFirstResult(from).setMaxResults(maxResult).getResultList();
     }
 
-    public List<E> getAll(int maxResult, int from) {
-        //TODO Break into lines
-        return entityManager.createQuery(getBaseRetrieveQuery()).setFirstResult(from).setMaxResults(maxResult).getResultList();
+    public List<E> fetch(int from, int maxResult) {
+        Query query = getEntityManager().createQuery(getBaseRetrieveQuery());
+        return query.setFirstResult(from).setMaxResults(maxResult).getResultList();
     }
 
-    public List<E> getAll() {
-        return entityManager.createQuery(getBaseRetrieveQuery()).getResultList();
+    public List<E> fetchAll() {
+        return getEntityManager().createQuery(getBaseRetrieveQuery()).getResultList();
     }
 
     protected CriteriaQuery<E> getBaseRetrieveQuery() {
         Class<E> clazz = getEntityClass();
-        CriteriaQuery<E> query = entityManager.getCriteriaBuilder().createQuery(clazz);
+        CriteriaQuery<E> query = getEntityManager().getCriteriaBuilder().createQuery(clazz);
         Root<E> variableRoot = query.from(getEntityClass());
         query.select(variableRoot);
         return query;
@@ -90,8 +91,7 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
     }
 
     @Override
-    //TODO rename
-    public Long getCount() {
+    public Long count() {
         String queryCommand = String.format("SELECT COUNT(a) FROM %s AS a ", getEntityClass().getName());
         Query query = this.getEntityManager().createQuery(queryCommand);
         List list = query.getResultList();
@@ -103,22 +103,18 @@ public class BaseDaoImpl<E extends Entity> implements BaseDao<E> {
     }
 
     @Override
-    public Long getCount(Map<String, Object> filters) {
+    public Long count(Map<String, Object> filters) {
 
         StringBuilder sb = new StringBuilder(String.format("SELECT COUNT(a) FROM %s AS a ", getEntityClass().getName()));
         if (filters.size() > 0)
             sb.append(" WHERE ");
 
         for (Map.Entry<String, Object> entry : filters.entrySet()) {
-            //TODO use String.format
             String key = entry.getKey();
-            sb.append("a.");
-            sb.append(key);
-            sb.append(" LIKE :");
-            sb.append(key);
+            sb.append(String.format("a.%s LIKE :%s", key,key));
         }
 
-        Query query = entityManager.createQuery(sb.toString());
+        Query query = getEntityManager().createQuery(sb.toString());
 
         for (Map.Entry<String, Object> entry : filters.entrySet()) {
             String key = entry.getKey();

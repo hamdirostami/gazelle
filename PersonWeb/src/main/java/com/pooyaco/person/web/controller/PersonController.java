@@ -1,20 +1,20 @@
 package com.pooyaco.person.web.controller;
 
+import com.pooyaco.gazelle.web.bundle.GazelleResources;
 import com.pooyaco.gazelle.web.model.GazelleLazyDataModel;
-import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
 import com.pooyaco.person.si.CityService;
 import com.pooyaco.person.si.PersonService;
 import com.pooyaco.person.web.model.PersonModel;
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,8 +24,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Named
-//TODO change to @RequestScoped
-@ViewScoped
+@RequestScoped
 public class PersonController extends PersonBaseController {
 
     @Inject
@@ -33,6 +32,7 @@ public class PersonController extends PersonBaseController {
 
     @Inject
     private transient CityService cityService;
+
 
     public void setPersonService(PersonService personService) {
         this.personService = personService;
@@ -42,65 +42,72 @@ public class PersonController extends PersonBaseController {
         this.cityService = cityService;
     }
 
-    //TODO rename to model
-    private PersonModel personModel;
+    private PersonModel model;
 
 
     @PostConstruct
     public void init() {
-        personModel = new PersonModel();
+        model = new PersonModel();
         getAll();
         getAllCities();
-        clear();
+        initializeModel();
     }
 
-    //TODO rename
-    public void clear() {
-        personModel.setSelectedPerson(new PersonDto());
-        //TODO show dialog here
+    public void initializeModel() {
+        model.setSelectedPerson(new PersonDto());
+    }
+
+    public void initializePerson(){
+        initializeModel();
+        RequestContext.getCurrentInstance().execute("PF('personDialog').show()");
     }
 
 
     public void update() {
-        if (personModel.getSelectedPerson().getPK() == null) {
-            personService.persist(personModel.getSelectedPerson());
+        if (model.getSelectedPerson().getPK() == null) {
+            personService.persist(model.getSelectedPerson());
 
         } else
-            personService.merge(personModel.getSelectedPerson());
+            personService.merge(model.getSelectedPerson());
 
         getAll();
-        addMessage();
-        //TODO hide dialog here
+        RequestContext.getCurrentInstance().execute("PF('personDialog').hide()");
+        showMessage(FacesMessage.SEVERITY_INFO, GazelleResources.SUCCESS_SUMMARY.value(), GazelleResources.SUCCESS_DETAIL.value());
     }
 
     public void delete() {
-        personService.remove(personModel.getSelectedPerson());
+        personService.remove(model.getSelectedPerson());
         getAll();
-        addMessage();
-    }
+        showMessage(FacesMessage.SEVERITY_INFO, GazelleResources.SUCCESS_SUMMARY.value(), GazelleResources.SUCCESS_DETAIL.value());
 
+
+    }
 
     public void selectAction(SelectEvent event) {
         OrganizationalUnitDto orgUnit = (OrganizationalUnitDto) event.getObject();
-        personModel.getSelectedPerson().setOrganizationalUnit(orgUnit);
+        model.getSelectedPerson().setOrganizationalUnit(orgUnit);
     }
 
-    public PersonModel getPersonModel() {
-        return personModel;
+    public PersonModel getModel() {
+        return model;
     }
 
 
-    public void setPersonModel(PersonModel personModel) {
-        this.personModel = personModel;
+    public void setModel(PersonModel model) {
+        this.model = model;
     }
 
     private void getAll() {
-        if (personModel.getPersons() == null)
-            personModel.setPersons(new GazelleLazyDataModel(personService));
+        if (model.getPersons() == null)
+            model.setPersons(new GazelleLazyDataModel(personService));
     }
 
     private void getAllCities() {
-        personModel.setCities(cityService.getAll(50, 0));
+        model.setCities(cityService.getAll());
     }
+
+
+
+
 
 }

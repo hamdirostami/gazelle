@@ -14,22 +14,18 @@ public interface BaseDao<E extends Entity> {
     void merge(E entity);
 
     // TODO Primary key may not be Long. it should support multi column PK.
-    E find(Long id);
+    E find(Object id);
 
-    // TODO Use another verb: "fetch" .
-    List<E> getAll();
+    List<E> fetchAll();
 
-    //TODO replace parameters
-    //TODO remove "All" from the name
-    List<E> getAll(int maxResult, int from);
+    List<E> fetch(int from, int maxResult);
 
-    List<E> getAll(int maxResult, int from, Map<String, Object> filters);
+    List<E> fetch(int maxResult, int from, Map<String, Object> filters);
 
     Class<E> getEntityClass();
 
-    //TODO rename to count
-    Long getCount();
+    Long count();
 
-    Long getCount(Map<String, Object> filters);
+    Long count(Map<String, Object> filters);
 
 }

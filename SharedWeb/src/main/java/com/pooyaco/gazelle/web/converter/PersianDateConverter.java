@@ -2,7 +2,8 @@ package com.pooyaco.gazelle.web.converter;
 
 import com.ghasemkiani.util.DateFields;
 import com.ghasemkiani.util.SimplePersianCalendar;
-import com.pooyaco.gazelle.web.util.Utils;
+import com.pooyaco.gazelle.web.util.DateUtils;
+import com.pooyaco.gazelle.web.util.WebUtils;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -11,7 +12,9 @@ import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 @FacesConverter("persianDateConverter")
 public class PersianDateConverter implements Converter {
@@ -30,12 +33,12 @@ public class PersianDateConverter implements Converter {
 
             DateFormat dateFormat = new SimpleDateFormat("yyyy" + SEPARATOR + "MM" + SEPARATOR + "dd");
             SimplePersianCalendar simplePersianCalendar = new SimplePersianCalendar();
-            if (!Utils.isValidDate(param)) {
+            if (!DateUtils.isValidDate(param)) {
                 //TODO Add message
                 return null;
             }
             String[] params = param.split(SEPARATOR);
-            if (Utils.getBrowserType().equals(Utils.MICROSOFT_IE)) {
+            if (WebUtils.getBrowserType().equals(WebUtils.MICROSOFT_IE)) {
                 simplePersianCalendar.setDateFields(Integer.parseInt(params[2]),
                         Integer.parseInt(params[1]) - 1,
                         Integer.parseInt(params[0]));
@@ -46,13 +49,13 @@ public class PersianDateConverter implements Converter {
             }
 
             String miladiYear =
-                    Long.toString(simplePersianCalendar.get(simplePersianCalendar.ERA) == simplePersianCalendar.AD ? simplePersianCalendar.get(simplePersianCalendar.YEAR) :
-                            -(simplePersianCalendar.get(simplePersianCalendar.YEAR) - 1));
-            String miladiMonth = Long.toString(simplePersianCalendar.get(simplePersianCalendar.MONTH) + 1);
+                    Long.toString(simplePersianCalendar.get(Calendar.ERA) == GregorianCalendar.AD ? simplePersianCalendar.get(Calendar.YEAR) :
+                            -(simplePersianCalendar.get(Calendar.YEAR) - 1));
+            String miladiMonth = Long.toString(simplePersianCalendar.get(Calendar.MONTH) + 1);
             if (miladiMonth.length() == 1)
                 miladiMonth = "0" + miladiMonth;
 
-            String miladiDay = Long.toString(simplePersianCalendar.get(simplePersianCalendar.DAY_OF_MONTH));
+            String miladiDay = Long.toString(simplePersianCalendar.get(Calendar.DAY_OF_MONTH));
             if (miladiDay.length() == 1)
                 miladiDay = "0" + miladiDay;
 
@@ -96,11 +99,11 @@ public class PersianDateConverter implements Converter {
             inputValDayTime = inputVal[2].trim().split(" ");
             inputVal[2] = inputValDayTime[0].trim();
             int day = Integer.parseInt(inputVal[2]);
-            simplePersianCalendar.set(simplePersianCalendar.YEAR, year);
-            simplePersianCalendar.set(simplePersianCalendar.MONTH, month);
-            simplePersianCalendar.set(simplePersianCalendar.DAY_OF_MONTH, day);
+            simplePersianCalendar.set(Calendar.YEAR, year);
+            simplePersianCalendar.set(Calendar.MONTH, month);
+            simplePersianCalendar.set(Calendar.DAY_OF_MONTH, day);
             dateFields = simplePersianCalendar.getDateFields();
-            if (Utils.getBrowserType().equals(Utils.MICROSOFT_IE)) {
+            if (WebUtils.getBrowserType().equals(WebUtils.MICROSOFT_IE)) {
                 retVal = String.valueOf(dateFields.getDay() + 100).substring(1);
                 retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getMonth() + 1 + 100).substring(1));
                 retVal = retVal.concat(SEPARATOR).concat(String.valueOf(dateFields.getYear()));

@@ -8,7 +8,6 @@ package com.pooyaco.gazelle.dto;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Dto{
-    //TODO rename id to PK.
     public abstract Object getPK();
     public abstract void setPK(Object pk);
 }

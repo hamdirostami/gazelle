@@ -20,22 +20,13 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
         this.baseService = baseService;
     }
 
-    //TODO remove
-    private List<D> rows;
-
     public GazelleLazyDataModel(BaseService baseService) {
         this.baseService = baseService;
     }
 
     @Override
-    //TODO load from DB.
     public D getRowData(String rowKey) {
-        for (D pagingDto : rows) {
-            if (pagingDto.getPK().equals(rowKey))
-                return pagingDto;
-        }
-
-        return null;
+        return (D)baseService.find(Long.getLong(rowKey));
     }
 
     @Override
@@ -45,7 +36,7 @@ public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
 
     @Override
     public List<D> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters) {
-        rows = baseService.getAll(pageSize, first, filters);
+        List<D> rows = baseService.getAll(first, pageSize, filters);
         setRowCount(baseService.getCount(filters).intValue());
         setPageSize(pageSize);
         return rows;
