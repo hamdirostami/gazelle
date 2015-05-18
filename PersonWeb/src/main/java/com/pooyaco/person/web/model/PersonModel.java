@@ -1,9 +1,8 @@
 package com.pooyaco.person.web.model;
 
-import com.pooyaco.gazelle.web.model.GazelleLazyDataModel;
+import com.pooyaco.gazelle.web.model.GazelleModel;
 import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.PersonDto;
-import org.primefaces.model.LazyDataModel;
 
 import java.util.List;
 
@@ -14,12 +13,11 @@ import java.util.List;
  * Time: 05:00 م
  * To change this template use File | Settings | File Templates.
  */
-public class PersonModel{
+public class PersonModel extends GazelleModel {
 
     public PersonModel() {
     }
-    //TODO move to controller
-    private GazelleLazyDataModel<PersonDto> persons;
+
     private PersonDto selectedPerson;
     private List<CityDto> cities;
 
@@ -40,12 +38,5 @@ public class PersonModel{
     }
 
 
-    public GazelleLazyDataModel<PersonDto> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(GazelleLazyDataModel<PersonDto> persons) {
-        this.persons = persons;
-    }
 
 }

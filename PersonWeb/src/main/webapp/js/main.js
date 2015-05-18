@@ -1,4 +1,3 @@
-//TODO add clientId as parameter
 /*
  function dateInitialize(id) {
  var components = document.getElementsByClassName("date_picker");

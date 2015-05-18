@@ -1,5 +1,6 @@
 package com.pooyaco.person.web.model;
 
+import com.pooyaco.gazelle.web.model.GazelleModel;
 import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
@@ -13,9 +14,9 @@ import java.util.List;
  * Time: 05:00 م
  * To change this template use File | Settings | File Templates.
  */
-public class PersonLovModel {
+public class OrganizationalUnitModel extends GazelleModel {
 
-    public PersonLovModel() {
+    public OrganizationalUnitModel() {
     }
 
     private List<OrganizationalUnitDto> orgUnits;

@@ -17,7 +17,7 @@
 
         <br/><br/>
         <p:dataTable id="personList" var="person" lazy="true"
-                     value="#{personController.model.persons}" selectionMode="single" rowKey="#{person.PK}"
+                     value="#{personController.persons}" selectionMode="single" rowKey="#{person.PK}"
                      rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
                      paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                      currentPageReportTemplate="{currentPage} #{label.FROM} {totalPages}"
@@ -73,12 +73,12 @@
             <p:outputPanel id="personDetail" styleClass="container">
                     <div class="r_field margin_right">
                     <h:outputText value="#{personlabel.FIRST_NAME}"/>
-                    <p:inputText id="firstName" value="#{personController.model.selectedPerson.firstName}"
+                    <p:inputText id="firstName" componentType="number"  value="#{personController.model.selectedPerson.firstName}"
                             />
                     </div>
                 <div class="r_field">
                     <h:outputText value="#{personlabel.LAST_NAME}"/>
-                    <p:inputText value="#{personController.model.selectedPerson.lastName}" onkeyup=""/>
+                    <p:inputText value="#{personController.model.selectedPerson.lastName}" />
                 </div>
                 <div class="r_field margin_right">
                     <h:outputText value="#{personlabel.BIRTHDAY}"/>
@@ -99,7 +99,7 @@
                                 actionListener="#{personController.openModalDialog('organizationalUnits')}"></g:pooyaLov>
                 </div>
                 <div class="r_field">
-                    <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":growl">
+                    <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":form:personList :growl">
                     </p:commandButton>
                 </div>
             </p:outputPanel>

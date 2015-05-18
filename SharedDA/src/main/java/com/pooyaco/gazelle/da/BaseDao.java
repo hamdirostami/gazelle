@@ -13,7 +13,6 @@ public interface BaseDao<E extends Entity> {
 
     void merge(E entity);
 
-    // TODO Primary key may not be Long. it should support multi column PK.
     E find(Object id);
 
     List<E> fetchAll();

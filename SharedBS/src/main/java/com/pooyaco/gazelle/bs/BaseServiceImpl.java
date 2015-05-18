@@ -8,6 +8,7 @@ import org.dozer.Mapper;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;
 import java.util.List;

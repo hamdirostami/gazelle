@@ -8,23 +8,28 @@ import org.primefaces.component.inputtext.InputText;
 public class GazelleInputText extends InputText {
 
     protected enum Properties {
+
         componentType
+
     }
 
     protected enum ComponentTypes {
-         text, number
+        text, number
     }
 
     public GazelleInputText() {
         super();
     }
 
-    //TODO change type to ComponentType enum
-    public String getComponentType() {
-        return (String) getStateHelper().eval(Properties.componentType, null);
+    public ComponentTypes getComponentType() {
+        Object o = getStateHelper().eval(Properties.componentType, null);
+        if(o == null)
+            return null;
+
+        return ComponentTypes.valueOf(o.toString());
     }
 
-    public void setComponentType(String componentType) {
+    public void setComponentType(ComponentTypes componentType) {
         getStateHelper().put(Properties.componentType, componentType);
     }
 }

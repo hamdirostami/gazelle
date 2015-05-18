@@ -1,4 +1,4 @@
-package com.pooyaco.gazelle.web.model;
+package com.pooyaco.gazelle.web.controller;
 
 import com.pooyaco.gazelle.dto.Dto;
 import com.pooyaco.gazelle.si.BaseService;
@@ -11,16 +11,15 @@ import java.util.Map;
 /**
  * Created by h.rostami on 2015/03/12.
  */
-public class GazelleLazyDataModel<D extends Dto> extends LazyDataModel<D> {
+public class GazelleLazyDataController<D extends Dto> extends LazyDataModel<D> {
 
-    //TODO Using service in Model?
     private BaseService baseService;
 
     public void setBaseService(BaseService baseService) {
         this.baseService = baseService;
     }
 
-    public GazelleLazyDataModel(BaseService baseService) {
+    public GazelleLazyDataController(BaseService baseService) {
         this.baseService = baseService;
     }
 

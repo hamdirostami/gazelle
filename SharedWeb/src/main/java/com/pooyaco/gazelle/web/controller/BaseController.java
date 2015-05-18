@@ -1,9 +1,12 @@
 package com.pooyaco.gazelle.web.controller;
 
+import com.pooyaco.gazelle.dto.Dto;
+import com.pooyaco.gazelle.si.BaseService;
 import org.primefaces.context.RequestContext;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,9 +14,18 @@ import java.util.Map;
 /**
  * Created by h.rostami on 2015/02/27.
  */
-//TODO add service and model
-//TODO create model base class
-public class BaseController {
+public class BaseController<S extends BaseService> {
+
+    @Inject
+    private transient S service;
+
+    public void setService(S service) {
+        this.service = service;
+    }
+
+    public S getService() {
+        return service;
+    }
 
     public String getBasePath() {
         HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();

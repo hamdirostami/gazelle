@@ -1,7 +1,8 @@
 package com.pooyaco.person.web.controller;
 
 import com.pooyaco.gazelle.web.bundle.GazelleResources;
-import com.pooyaco.gazelle.web.model.GazelleLazyDataModel;
+import com.pooyaco.gazelle.web.controller.BaseController;
+import com.pooyaco.gazelle.web.controller.GazelleLazyDataController;
 import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
 import com.pooyaco.person.si.CityService;
@@ -25,24 +26,20 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class PersonController extends PersonBaseController {
+public class PersonController extends BaseController<PersonService> {
 
-    @Inject
-    private transient PersonService personService;
+
 
     @Inject
     private transient CityService cityService;
 
-
-    public void setPersonService(PersonService personService) {
-        this.personService = personService;
-    }
 
     public void setCityService(CityService cityService) {
         this.cityService = cityService;
     }
 
     private PersonModel model;
+    private GazelleLazyDataController<PersonDto> persons;
 
 
     @PostConstruct
@@ -65,19 +62,17 @@ public class PersonController extends PersonBaseController {
 
     public void update() {
         if (model.getSelectedPerson().getPK() == null) {
-            personService.persist(model.getSelectedPerson());
+            getService().persist(model.getSelectedPerson());
 
         } else
-            personService.merge(model.getSelectedPerson());
+            getService().merge(model.getSelectedPerson());
 
-        getAll();
         RequestContext.getCurrentInstance().execute("PF('personDialog').hide()");
         showMessage(FacesMessage.SEVERITY_INFO, GazelleResources.SUCCESS_SUMMARY.value(), GazelleResources.SUCCESS_DETAIL.value());
     }
 
     public void delete() {
-        personService.remove(model.getSelectedPerson());
-        getAll();
+        getService().remove(model.getSelectedPerson());
         showMessage(FacesMessage.SEVERITY_INFO, GazelleResources.SUCCESS_SUMMARY.value(), GazelleResources.SUCCESS_DETAIL.value());
 
 
@@ -98,8 +93,8 @@ public class PersonController extends PersonBaseController {
     }
 
     private void getAll() {
-        if (model.getPersons() == null)
-            model.setPersons(new GazelleLazyDataModel(personService));
+        if (getPersons() == null)
+            setPersons(new GazelleLazyDataController(getService()));
     }
 
     private void getAllCities() {
@@ -109,5 +104,12 @@ public class PersonController extends PersonBaseController {
 
 
 
+    public GazelleLazyDataController<PersonDto> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(GazelleLazyDataController<PersonDto> persons) {
+        this.persons = persons;
+    }
 
 }
