@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="MainWeb-1.0-SNAPSHOT">
-    <output-path>$PROJECT_DIR$/MainWeb/target/</output-path>
-    <root id="archive" name="MainWeb-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="MainWeb-1.0-SNAPSHOT exploded" />
-    </root>
-  </artifact>
-</component>
