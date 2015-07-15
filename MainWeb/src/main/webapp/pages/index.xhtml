@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="../templates/layout.xhtml">
+
+    <ui:define name="content">
+        <p:panel id="centercontent">
+            <ui:include src="/pages/#{mainMenuBarController.selectedPageName}"/>
+        </p:panel>
+    </ui:define>
+
+</ui:composition>
+</html>

@@ -20,14 +20,13 @@ public interface BaseService<D extends Dto> {
 
     void merge(D dto);
 
-    //TODO find should support other types of PKs too
-    D find(Long id);
+    D find(Object id);
 
     List<D> getAll();
 
     List<D> getAll(int maxResult, int from);
 
-    List<D> getAll(int maxResult, int from, Map<String, Object> filters);
+    List<D> getAll(int from,int maxResult, Map<String, Object> filters);
 
     Long getCount();
 

@@ -3,8 +3,7 @@ package com.pooyaco.person.da.impl;
 import com.pooyaco.gazelle.da.impl.BaseDaoImpl;
 import com.pooyaco.person.da.OrganizationalUnitDao;
 import com.pooyaco.person.entity.OrganizationalUnit;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,7 +12,7 @@ import javax.inject.Named;
  * Time: 02:03 م
  * To change this template use File | Settings | File Templates.
  */
-@Named
+@Service
 public class OrganizationalUnitDaoImpl extends BaseDaoImpl<OrganizationalUnit> implements OrganizationalUnitDao {
 
 }

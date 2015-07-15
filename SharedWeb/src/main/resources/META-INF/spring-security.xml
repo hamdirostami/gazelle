@@ -26,8 +26,4 @@
                                authorities-by-username-query="select ur.user_name, ur.authority from Bank_Employee_User_Roles ur where ur.user_name = ? " />
         </authentication-provider>
     </authentication-manager>
-
-    <jee:jndi-lookup id="dataSource"
-                     jndi-name="jdbc/mcfsDs"
-                     expected-type="javax.sql.DataSource"/>
 </beans:beans>

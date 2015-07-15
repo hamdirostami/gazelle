@@ -5,8 +5,7 @@ import com.pooyaco.person.da.impl.CityDaoImpl;
 import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.entity.City;
 import com.pooyaco.person.si.CityService;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +14,6 @@ import javax.inject.Named;
  * Time: 02:44 م
  * To change this template use File | Settings | File Templates.
  */
-@Named
+@Service
 public class CityServiceImpl extends BaseServiceImpl<CityDto, City, CityDaoImpl> implements CityService<CityDto> {
 }

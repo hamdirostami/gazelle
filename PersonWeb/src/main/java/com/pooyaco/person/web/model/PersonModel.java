@@ -1,10 +1,12 @@
 package com.pooyaco.person.web.model;
 
-import com.pooyaco.gazelle.web.model.GazelleLazyDataModel;
+import com.pooyaco.gazelle.web.model.GazelleModel;
 import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.PersonDto;
-import org.primefaces.model.LazyDataModel;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,16 +16,25 @@ import java.util.List;
  * Time: 05:00 م
  * To change this template use File | Settings | File Templates.
  */
-public class PersonModel{
+@Component
+@Scope("view")
+public class PersonModel extends GazelleModel implements Serializable {
 
     public PersonModel() {
+        System.out.println("");
     }
-
-    //TODO move to controller
-    private GazelleLazyDataModel<PersonDto> persons;
 
     private PersonDto selectedPerson;
     private List<CityDto> cities;
+    private Long personId;
+
+    public Long getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(Long personId) {
+        this.personId = personId;
+    }
 
     public List<CityDto> getCities() {
         return cities;
@@ -40,14 +51,4 @@ public class PersonModel{
     public void setSelectedPerson(PersonDto selectedPerson) {
         this.selectedPerson = selectedPerson;
     }
-
-
-    public GazelleLazyDataModel<PersonDto> getPersons() {
-        return persons;
-    }
-
-    public void setPersons(GazelleLazyDataModel<PersonDto> persons) {
-        this.persons = persons;
-    }
-
 }

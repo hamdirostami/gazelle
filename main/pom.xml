@@ -23,6 +23,7 @@
         <module>../PersonBS</module>
         <module>../PersonIntegration</module>
         <module>../PersonWeb</module>
+        <module>../MainWeb</module>
     </modules>
 
 

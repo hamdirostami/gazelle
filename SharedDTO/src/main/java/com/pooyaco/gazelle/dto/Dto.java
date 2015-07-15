@@ -1,5 +1,7 @@
 package com.pooyaco.gazelle.dto;
 
+import java.io.Serializable;
+
 /**
  * Created with IntelliJ IDEA.
  * User: h.rostami
@@ -7,8 +9,7 @@ package com.pooyaco.gazelle.dto;
  * Time: 10:26 ص
  * To change this template use File | Settings | File Templates.
  */
-public abstract class Dto{
-    //TODO rename id to PK.
+public abstract class Dto implements Serializable {
     public abstract Object getPK();
     public abstract void setPK(Object pk);
 }

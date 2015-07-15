@@ -19,11 +19,10 @@
 </h:head>
 <h:body>
     <h:form id="orgUnitForm">
-        <p:dataTable id="organizationalUnitList" var="orgUnit" value="#{personBaseController.personLovModel.orgUnits}"
+        <p:dataTable id="organizationalUnitList" var="orgUnit" value="#{organizationalUnitController.organizationalUnitModel.orgUnits}"
                          selectionMode="single" rowKey="#{orgUnit.PK}"
-                         rows="10">
+                         rows="100">
 
-            <!-- TODO remove -->
             <p:ajax event="rowSelect" listener="#{personController.onOrgUnitSelect}"/>
 
                 <p:column headerText="#{personlabel.ORG_UNIT_NAME}">

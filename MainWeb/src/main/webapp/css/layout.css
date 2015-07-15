@@ -1,0 +1,922 @@
+.header_Table{
+    width:100%;
+    height:150px;
+    direction:rtl;
+}
+
+.toolbar_lable{
+    text-align:right;
+}
+
+.content_Table{
+    text-align:right;
+}
+/*
+padding of toolbar
+*/
+.ui-toolbar {
+    padding:0;
+}
+/*
+font size of ui widget eg. header of menu
+*/
+
+
+.ui-widget {
+    text-align:right;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 0px solid #D3D3D3;
+    color: #000000;
+}
+
+.ui-widget .ui-widget-header {
+}
+
+.ui-widget-content {
+    text-align:center;
+    direction:rtl !important;
+}
+
+
+body.ui-layout {
+    direction: rtl;
+}
+
+body.ui-layout .ui-layout-doc {
+    margin: 0 auto;
+    border: 1px;
+}
+
+body.ui-layout .ui-layout-doc .ui-layout-unit-top,
+body.ui-layout .ui-layout-doc .ui-layout-unit-top .ui-layout-wrap,
+body.ui-layout .ui-layout-doc .ui-layout-unit-top .ui-layout-wrap .ui-layout-bd {
+    margin: 0 auto !important;
+}
+
+.ui-accordion .ui-accordion-content .wijmo-wijmenu {
+    border: none;
+}
+
+
+/* data grids' and data tables' paginator */
+.ui-datagrid .ui-paginator,
+.ui-datatable .ui-paginator {
+    /* fixing the bogus label shown by paginator */
+    direction: rtl;
+}
+
+ .ui-paginator-current {
+    display: inline-block;
+    margin-left: 1px;
+    margin-right: 1px;
+    outline: medium none;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+
+.ui-paginator-current, .ui-paginator-rpp-options {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+
+.ui-datatable .ui-datatable-data-empty td {
+    border-color: inherit;
+    margin: 0;
+    overflow: hidden;
+    padding: 4px 10px;
+    text-align: center;
+    direction:rtl;
+}
+
+.ui-datatable .ui-datatable-data td{
+    overflow: hidden;
+    padding: 4px 10px;
+    direction:rtl;
+}
+
+.ui-datatable .ui-expanded-row-content{
+    border-left:0px;
+    border-right:0px;
+    border-top:0px;
+    border-bottom:0px;
+    direction:rtl;
+}
+
+/* top layoutUnit */
+.ui-layout .ui-layout-doc .ui-layout-unit-top {
+    background-position: center center;
+    background-repeat: no-repeat;
+    direction:rtl !important;
+}
+
+
+.ui-layout-pane {
+}
+
+ul{
+    text-align:right;
+    direction:rtl;
+}
+
+body{
+    direction:rtl;
+}
+
+output{
+}
+
+.ui-panel-content .table .td{
+}
+
+.ui-menu .ui-menuitem-text {
+    float: right;
+    direction:rtl !important;
+}
+
+
+/*
+for header of dialog , title text
+*/
+.ui-dialog .ui-dialog-title{
+    float:right;
+}
+/*
+for header of dialog ,close icon and minimize and maximize
+*/
+.ui-dialog .ui-dialog-titlebar-close, .ui-dialog .ui-dialog-titlebar-minimize, .ui-dialog .ui-dialog-titlebar-maximize {
+   float:left;
+}
+/*
+for tabs of dialog,
+*/
+.ui-tabs .ui-tabs-nav li {
+    float:right;
+}
+/*
+  for tab fonts of dialog
+*/
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
+}
+/*
+  for tab panel
+*/
+.ui-tabs {
+    height:90%;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button,.ui-widget output {
+}
+
+
+.ui-panel .ui-panel-content {
+   background: none repeat scroll 0 0 transparent;
+   padding: 0.5em 1em;
+   text-align: right;
+}
+
+.ui-widget-content a {
+   color: #000000;
+}
+
+   /*
+ for column of dashboard
+   */
+.ui-dashboard-column {
+   padding-bottom: 30px;
+   padding-right: 30px;
+   padding-left: 30px;
+   padding-top: 30px;
+}
+
+
+.ui-menu .ui-menuitem-link .ui-menuitem-icon {
+    float: right;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left:3px;
+}
+
+
+.data-table-column-icon{
+    width:30px;
+}
+
+.data-table-column-rowNum{
+    width:15px;
+
+}
+
+.data-table-column-data{
+}
+
+.data-table-column-select{
+}
+
+.head_output{
+}
+
+.ui-breadcrumb ul{
+    float:right;
+}
+
+.ui-breadcrumb ul li {
+    float:right;
+    direction:rtl;
+    text-align:right;
+}
+
+/*
+   for breadcrumb text
+*/
+.ui-breadcrumb ul li a {
+    text-decoration: none;
+    text-align:right;
+}
+/*
+ * for growl text
+ */
+.ui-growl-message {
+    float: right;
+    padding: 0 0 5px;
+
+}
+
+/*
+    for growl body
+*/
+.ui-growl {
+    right: 50px;
+    top: 50px;
+}
+
+.ui-icon-triangle-1-e {
+    background-position: -96px -16px;
+}
+
+.layout-content{
+    width:100%;
+    height:100%;
+    text-align:center;
+    overflow:visible;
+}
+
+.delete-confirmation-box{
+    right:200px;
+    bottom:250px;
+    width:400px;
+    height:50px;
+}
+
+.edit-dialog-box{
+    right:400px;
+    bottom:250px ;
+}
+
+.div-layout{
+    float:right;
+}
+
+.ui-breadcrumb{
+}
+
+.div-layout-output{
+    float:right;
+}
+
+.div-layout-input{
+    float:right;
+    text-align:right;
+}
+
+.div-layout-input-address{
+    float:right;
+    text-align:right;
+}
+
+.div-spacer{
+    height:30px;
+}
+
+.graphic-image {
+  border:0;
+}
+
+/*
+    for top and bottom padding of divs
+*/
+.outputText-div{
+    overflow:hidden;
+    text-align:right;
+    direction:rtl;
+}
+
+.mainDevision-div{
+    float:right;
+    width:50%;
+}
+
+.saveButton_div{
+    width:100%;
+    text-align:center;
+    float:right;
+    overflow:hidden;
+}
+
+.selectOneMenu{
+    width:200px;
+    height:20px;
+}
+
+.ui-state-default .ui-icon-save{
+
+}
+
+ .ui-layout-unit .ui-layout-unit-content{
+    overflow:visible !important;
+}
+
+.ui-selectonemenu {
+    width:120px !important;
+    height:20px !important;
+    direction:rtl !important;
+}
+
+.ui-selectonemenu-panel .ui-selectonemenu-list-item {
+    text-align: right !important;
+}
+
+
+/******************************************************************/
+
+.header_Table{
+    width:100%;
+    height:150px;
+    direction:rtl;
+}
+
+.toolbar_lable{
+    text-align:right;
+}
+
+.content_Table{
+    text-align:right;
+}
+
+/*
+*   padding of toolbar
+*/
+.ui-toolbar {
+    padding:0;
+}
+
+/*
+* font size of ui widget eg. header of menu
+*/
+.ui-widget {
+    text-align:right;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    border: 1px solid #D3D3D3;
+    color: #000000;
+}
+
+.ui-widget .ui-widget-header {
+}
+
+.ui-widget-content {
+    text-align:center;
+    direction:rtl !important;
+}
+
+body.ui-layout {
+    direction: rtl;
+}
+
+body.ui-layout .ui-layout-doc {
+    margin: 0 auto;
+    border: 1px;
+}
+
+body.ui-layout .ui-layout-doc .ui-layout-unit-top,
+body.ui-layout .ui-layout-doc .ui-layout-unit-top .ui-layout-wrap,
+body.ui-layout .ui-layout-doc .ui-layout-unit-top .ui-layout-wrap .ui-layout-bd {
+    margin: 0 auto !important;
+}
+
+.ui-accordion .ui-accordion-content .wijmo-wijmenu {
+    border: none;
+}
+
+/* data grids' and data tables' paginator */
+.ui-datagrid .ui-paginator,
+.ui-datatable .ui-paginator {
+    /* fixing the bogus label shown by paginator */
+    direction: rtl;
+}
+
+.ui-paginator-current {
+    display: inline-block;
+    margin-left: 1px;
+    margin-right: 1px;
+    outline: medium none;
+    padding: 2px 6px;
+    text-decoration: none;
+}
+
+.ui-paginator-current, .ui-paginator-rpp-options {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+/* dataGrid column's title bar */
+.ui-datagrid .ui-datagrid-content .ui-datagrid-data .ui-datagrid-row
+.ui-datagrid-column .ui-panel .ui-panel-titlebar {
+    /* making the title of all data grid columns the same size */
+    height: 30px;
+    /* cropping the excess text or content though may not be desirable but
+    better than running through other parts of the column or page */
+    overflow: hidden;
+    /* making the title take the same color as the cell's set color */
+    text-align: center;
+}
+
+/* dataGrid column' title text */
+.ui-datagrid .ui-datagrid-content .ui-datagrid-data .ui-datagrid-row
+.ui-datagrid-column .ui-panel .ui-panel-titlebar .ui-panel-title {
+    /* removing the present margin from the title which causes it to extend
+    to the next line (title text is rendered as a <span> with some margin */
+    margin: 0px;
+    /* cropping the excess text or content though may not be desirable but
+    better than running through other parts of the column or page */
+    overflow: hidden;
+}
+
+/* data grid cells' content (for cell rendering i made use of panels) */
+.ui-datagrid-column .ui-panel .ui-panel-content table {
+    /* aligning the data grid cell (which should be panel) contents to be
+    placed in the middle of cell (panel) */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* data grid cells' content (for cell rendering i made use of panels) */
+.ui-datagrid-column .ui-panel .ui-panel-content table tr {
+    /* aligning each text line int the data grid cell (which should be panel)
+    to be placed in the middle of line */
+    text-align: center;
+}
+
+/* data grid cells' header (for them i made use of panels) */
+.ui-datagrid-column .ui-panel .ui-panel-titlebar {
+    /* removing header border */
+    border: none;
+    /* removing padding from header div to make the panel (data grid cell)
+    smaller */
+    padding: 0px;
+}
+
+/* dataTable columns */
+/* watch the weird inconsistent name: data-table-column */
+.ui-datatable .ui-datatable-data .data-table-column {
+    /* rendering the cell contents in the center */
+    text-align: center;
+}
+
+.ui-datatable .ui-datatable-data .ui-datatable-even  .ui-datatable-odd{
+    height: 40px;
+    /* center-aligning the text within cells */
+    text-align: center;
+}
+
+.ui-datatable .ui-datatable-data td, .ui-datatable .ui-datatable-data-empty td {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0;
+    overflow: hidden;
+    padding: 4px 10px;
+    text-align: center;
+    direction:rtl;
+}
+
+/* top layoutUnit */
+.ui-layout .ui-layout-doc .ui-layout-unit-top {
+    background-position: center center;
+    background-repeat: no-repeat;
+    direction:rtl !important;
+}
+
+/* layoutUnits (header, menu, content, footer) */
+.ui-layout .ui-layout-doc .ui-layout-unit .ui-layout-wrap .ui-layout-bd {
+    /* hiding the enclosing border */
+    border: none;
+    /* right-aligning some text, but cannot do with all text within container,
+    as i know accordion tab header and data grid column header get
+    right-aligned but not menu items */
+    text-align: right ;
+    direction:rtl !important;
+}
+
+/* accordions' content enclosing box */
+/*! .ui-layout-bd is necessary for correctly replacing the style of target,
+without this the predefined style class gets precedence and this style will not
+have any effects */
+.ui-layout-bd .ui-accordion .ui-accordion-content {
+    /* removing the big default space between accordion and its content */
+    padding: 0px 0px 0px 0px;
+    overflow: hidden;
+    direction:rtl !important;
+}
+
+.ui-layout-unit-bottom .ui-widget-content {
+    color: #ff0000;
+    direction:rtl !important;
+}
+
+/* menu items */
+.wijmo-wijmenu .wijmo-wijmenu-list .wijmo-wijmenu-item .wijmo-wijmenu-text {
+    /* making menu items to align with right */
+    float: right;
+}
+
+.ui-accordion .ui-accordion-header{
+    text-align:right;
+    direction:rtl !important;
+}
+
+.ui-accordion .ui-accordion-content{
+    text-align:right;
+    padding: 0em 0em;
+    overflow:hidden;
+    direction:rtl !important;
+}
+
+.ui-menu{
+    float:right;
+    text-align:right;
+    padding:0;
+    width:100%;
+    direction:rtl !important;
+}
+
+.ui-menu .ui-menuitem {
+    text-align:right;
+    float:right;
+    direction:rtl !important;
+}
+
+.ui-menuitem-link {
+    text-align:right;
+    float:right;
+    direction:rtl !important;
+    padding:2px;
+}
+
+.ui-menu-list {
+    float:right;
+    direction:rtl !important;
+    width:100%;
+    right: 0;
+}
+
+.ui-layout-pane {
+}
+
+ul{
+    text-align:right;
+    direction:rtl;
+}
+
+.ui-menu .ui-menu-list .ui-menuitem {
+    border: medium none;
+    direction:rtl !important;
+}
+
+.ui-widget .ui-widget {
+    direction:rtl !important;
+}
+
+
+body{
+    direction:rtl;
+}
+
+.ui-state-default .ui-icon-save{
+    width:24px;
+    height:24px;
+    padding:0px;
+    padding-top:0px;
+}
+
+.ui-menu .ui-menuitem-text {
+    float: right;
+    direction:rtl !important;
+}
+
+.ui-menubar{
+    float: right !important;
+    margin-left: 0px !important;
+}
+
+.ui-menuitem-text {
+    float: right !important;
+}
+
+.save-pdf-icon{
+    width:35px;
+    height:35px;
+    background-repeat:no-repeat;
+    border:0;
+}
+
+.save-xls-icon{
+    width:35px;
+    height:35px;
+    border:0;
+}
+
+.save-csv-icon{
+    width:35px;
+    height:35px;
+    background-repeat:no-repeat;
+    border:0;
+}
+
+.save-xml-icon{
+    width:35px;
+    height:35px;
+    background-repeat:no-repeat;
+    border:0;
+}
+
+/*
+for header of dialog , title text
+*/
+.ui-dialog .ui-dialog-title{
+    float:right;
+}
+
+/*
+for header of dialog ,close icon and minimize and maximize
+*/
+.ui-dialog .ui-dialog-titlebar-close, .ui-dialog .ui-dialog-titlebar-minimize, .ui-dialog .ui-dialog-titlebar-maximize {
+   float:left;
+}
+
+/*
+for tabs of dialog,
+*/
+.ui-tabs .ui-tabs-nav li {
+    float:right;
+}
+/*
+  for tab fonts of dialog
+*/
+.ui-tabs .ui-tabs-nav li a, .ui-tabs.ui-tabs-collapsible .ui-tabs-nav li.ui-tabs-selected a {
+}
+
+/*
+  for tab panel
+*/
+.ui-tabs {
+    height:90%;
+}
+
+.ui-state-default .ui-icon-moveToLeft{
+    /*background-image: url("../image/moveToLeft.png");*/
+    width:16px;
+    height:16px;
+}
+
+.ui-state-default .ui-icon-moveToRight{
+    /*background-image: url("../image/moveToRight.png");*/
+    width:16px;
+    height:16px;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button,.ui-widget output {
+}
+
+
+.ui-panel .ui-panel-content {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    padding: 0.5em 1em;
+    text-align: right;
+}
+
+.ui-widget-content a {
+    color: #000000;
+    border:0;
+}
+
+/*
+  for column of dashboard
+*/
+.ui-dashboard-column {
+    float: right;
+    padding-bottom: 30px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+
+.ui-state-default .ui-icon-users{
+}
+
+.ui-menu .ui-menuitem-link .ui-menuitem-icon {
+    float: right;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left:3px;
+}
+
+/* Menu icon position
+---------------------------------- */
+.ui-icon1-home {background-position: -48px -16px;}
+.ui-icon1-trans-auto {background-position: -80px -96px;}
+.ui-icon1-zone-money {background-position: 0px -32px;}
+.ui-icon1-table-money {background-position: -48px -32px;}
+.ui-icon1-statement {background-position: -64px -32px;}
+.ui-icon1-mony-card {background-position: -96px -96px;}
+.ui-icon1-cheque {background-position: -64px -96px;}
+.ui-icon1-cheque-receip {background-position: 0px -96px;}
+.ui-icon1-money {background-position: -112px -96px;}
+.ui-icon1-bill {background-position: -48px -96px;}
+.ui-icon1-vcard {background-position: -16px -32px;}
+.ui-icon1-add {background-position: -96px 0px;}
+.ui-icon1-group {background-position: -64px -48px;}
+.ui-icon1-calculator {background-position: -208px -80px;}
+.ui-icon1-pass {background-position: -176px -80px;}
+.ui-icon1-cog {background-position: -144px -32px;}
+.ui-icon1-config {background-position: -160px -80px;}
+.ui-icon1-cards {background-position: -48px -96px;}
+.ui-icon1-credit {background-position: -48px -32px;}
+.ui-icon1-report {background-position: -160px -32px;}
+.ui-icon1-cancel {background-position: -80px 0px;}
+.ui-icon1-cash {background-position: -128px -96px;}
+.ui-icon1-doc {background-position: -64px -32px;}
+.ui-icon1-door {background-position: -128px -80px;}
+.ui-icon1-table-transfer {background-position: -32px -32px;}
+.ui-icon1-bar-chart {background-position: -224px -80px;}
+.ui-icon1-table-doc {background-position: -208px -32px;}
+.ui-icon1-bank {background-position: -128px -16px;}
+.ui-icon1-payment {background-position: -144px -96px;}
+.ui-icon1-credit-card {background-position: -160px -96px;}
+.ui-icon1-schedule {background-position: 0px -128px;}
+.ui-icon1-user {background-position: -16px -48px;}
+.ui-icon1-group {background-position: -64px -48px;}
+.ui-icon1-report {background-position: -176px -32px;}
+.ui-icon1-action {background-position: -16px -128px;}
+.ui-icon1-resource {background-position: -160px -80px;}
+
+
+.ui-icon1{
+    float: right;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    margin-left:3px;
+}
+
+
+.data-table-column-icon{
+    width:30px;
+}
+
+.data-table-column-rowNum{
+    width:15px;
+}
+
+.data-table-column-data{
+    width:100px;
+}
+.data-table-column-select{
+    width:20px;
+}
+
+.head_output{
+
+}
+
+.ui-breadcrumb ul{
+    float:right;
+}
+
+.ui-breadcrumb ul li {
+    float:right;
+    direction:rtl;
+    text-align:right;
+}
+
+/*
+ for breadcrumb text
+*/
+.ui-breadcrumb ul li a {
+    text-decoration: none;
+    text-align:right;
+}
+
+/*
+ * for growl text
+ */
+.ui-growl-message {
+    float: right;
+    padding: 0 0 5px;
+    width: 400px;
+}
+ /*
+    for growl body
+ */
+.ui-growl {
+    right: 50px;
+    top: 50px;
+    width: 500px;
+}
+
+.ui-icon-triangle-1-e {
+    background-position: -96px -16px;
+}
+
+.layout-content{
+    width:100%;
+    text-align:center;
+    overflow:scroll;
+}
+
+.delete-confirmation-box{
+    right:200px;
+    bottom:250px;
+    width:400px;
+    height:50px;
+}
+
+.edit-dialog-box{
+    position: absolute;
+    right:400px;
+    bottom:250px ;
+}
+
+.div-layout{
+    float:right;
+    height:20px;
+}
+
+.ui-breadcrumb{
+    width:470px;
+}
+
+.div-layout-output{
+    float:right;
+    width:100px;
+    white-space:nowrap;
+    text-align:right;
+    padding-right:10px;
+}
+
+.div-spacer{
+    height:30px;
+}
+
+.graphic-image {
+  border:0;
+}
+
+ .ui-layout-unit .ui-layout-unit-content
+{
+    overflow:visible !important;
+}
+
+ .ui-dialog
+{
+    position:absolute !important;
+     vertical-align:middle !important;
+}
+
+.input-mandatory
+{
+    width:100% !important;
+    background-color:#FDF79C !important;
+}
+
+.ui-widget-header1 {
+    background-color: #FBDBBB;
+    border: 1px solid #E78F08;
+    color: #F97F09;
+    text-align: right;
+}
+
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;
+}
+
+.ui-layout-unit-content {
+    overflow:visible !important;
+}

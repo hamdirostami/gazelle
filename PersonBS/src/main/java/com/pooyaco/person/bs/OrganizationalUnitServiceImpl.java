@@ -1,17 +1,11 @@
 package com.pooyaco.person.bs;
 
 import com.pooyaco.gazelle.bs.BaseServiceImpl;
-import com.pooyaco.person.da.OrganizationalUnitDao;
-import com.pooyaco.person.da.impl.CityDaoImpl;
 import com.pooyaco.person.da.impl.OrganizationalUnitDaoImpl;
-import com.pooyaco.person.dto.CityDto;
 import com.pooyaco.person.dto.OrganizationalUnitDto;
-import com.pooyaco.person.entity.City;
 import com.pooyaco.person.entity.OrganizationalUnit;
-import com.pooyaco.person.si.CityService;
 import com.pooyaco.person.si.OrganizationalUnitService;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,6 +14,6 @@ import javax.inject.Named;
  * Time: 02:44 م
  * To change this template use File | Settings | File Templates.
  */
-@Named
+@Service
 public class OrganizationalUnitServiceImpl extends BaseServiceImpl<OrganizationalUnitDto, OrganizationalUnit, OrganizationalUnitDaoImpl> implements OrganizationalUnitService<OrganizationalUnitDto> {
 }

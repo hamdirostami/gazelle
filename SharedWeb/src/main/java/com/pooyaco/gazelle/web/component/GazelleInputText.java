@@ -9,33 +9,27 @@ public class GazelleInputText extends InputText {
 
     protected enum Properties {
 
-        componentType;
+        componentType
 
-        //TODO usage? remove is unused.
-        String toString;
+    }
 
-        Properties(String toString) {
-            this.toString = toString;
-        }
-
-        Properties() {
-        }
-
-        public String toString() {
-            return ((this.toString != null) ? this.toString : super.toString());
-        }
+    protected enum ComponentTypes {
+        text, number
     }
 
     public GazelleInputText() {
         super();
     }
 
-    //TODO change type to ComponentType enum
-    public java.lang.String getComponentType() {
-        return (java.lang.String) getStateHelper().eval(Properties.componentType, null);
+    public ComponentTypes getComponentType() {
+        Object o = getStateHelper().eval(Properties.componentType, null);
+        if(o == null)
+            return null;
+
+        return ComponentTypes.valueOf(o.toString());
     }
 
-    public void setComponentType(String componentType) {
+    public void setComponentType(ComponentTypes componentType) {
         getStateHelper().put(Properties.componentType, componentType);
     }
 }

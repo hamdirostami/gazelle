@@ -1,4 +1,4 @@
-package com.pooyaco.person.web.controller;
+package com.pooyaco.gazelle.main;
 
 import org.primefaces.event.MenuActionEvent;
 import org.primefaces.model.menu.*;

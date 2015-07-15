@@ -1,5 +1,6 @@
 package com.pooyaco.person.si;
 
+import com.pooyaco.person.dto.OrganizationalUnitDto;
 import com.pooyaco.person.dto.PersonDto;
 import com.pooyaco.gazelle.si.BaseService;
 
@@ -10,6 +11,6 @@ import com.pooyaco.gazelle.si.BaseService;
  * Time: 02:42 م
  * To change this template use File | Settings | File Templates.
  */
-public interface PersonService extends BaseService<PersonDto> {
+public interface PersonService<D extends PersonDto> extends BaseService<D> {
 
 }

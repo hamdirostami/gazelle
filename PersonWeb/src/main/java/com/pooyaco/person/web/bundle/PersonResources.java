@@ -6,7 +6,7 @@ public enum PersonResources implements GazelleResourceEnum {
 
     PERSON_LIST("ليست افراد"),
     FIRST_NAME("نام"),
-    LAST_NAME("نام خاونادگي"),
+    LAST_NAME("نام خانوادگي"),
     BIRTHDAY("تاريخ تولد"),
     PERSON_INFO("مشخصات افراد"),
     CITY("شهر"),

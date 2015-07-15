@@ -16,60 +16,22 @@
     </servlet-mapping>
 
     <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>
-            classpath*:META-INF/spring/applicationContext.xml
-            classpath*:META-INF/spring-security.xml
-        </param-value>
-    </context-param>
-
-    <!-- Spring Security Filters : START -->
-    <filter>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <filter-class>
-            org.springframework.web.filter.DelegatingFilterProxy
-        </filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>springSecurityFilterChain</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-    </filter-mapping>
-    <!-- Spring Security Filters : END-->
-
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
-    <listener>
-        <listener-class>
-            org.springframework.web.context.request.RequestContextListener
-        </listener-class>
-    </listener>
-    <!-- Spring Security Listeners : START -->
-    <listener>
-        <listener-class>
-            org.springframework.security.web.session.HttpSessionEventPublisher
-        </listener-class>
-    </listener>
-    <!-- Spring Security Listeners : END -->
-
-    <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>redmond</param-value>
     </context-param>
 
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
-        <param-value>development</param-value>
+        <param-value>Development</param-value>
     </context-param>
 
     <context-param>
         <param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
-        <param-value>0</param-value>
+        <param-value>1</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>org.apache.myfaces.CACHE_EL_EXPRESSIONS</param-name>
+        <param-value>alwaysRecompile</param-value>
     </context-param>
 </web-app>

@@ -48,10 +48,24 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
+        <module name="MainWeb" />
+        <module name="PersonBS" />
+        <module name="PersonDA" />
+        <module name="PersonDTO" />
+        <module name="PersonEntity" />
         <module name="personEntity" />
+        <module name="PersonIntegration" />
+        <module name="PersonSI" />
         <module name="personWeb" />
+        <module name="PersonWeb" />
+        <module name="SharedBS" />
+        <module name="SharedDA" />
+        <module name="SharedDTO" />
         <module name="sharedEntity" />
+        <module name="SharedEntity" />
+        <module name="SharedSI" />
         <module name="sharedWeb" />
+        <module name="SharedWeb" />
       </profile>
     </annotationProcessing>
   </component>

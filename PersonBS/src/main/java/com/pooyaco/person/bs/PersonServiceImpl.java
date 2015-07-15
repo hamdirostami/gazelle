@@ -5,8 +5,7 @@ import com.pooyaco.person.da.PersonDao;
 import com.pooyaco.person.dto.PersonDto;
 import com.pooyaco.person.entity.Person;
 import com.pooyaco.person.si.PersonService;
-
-import javax.inject.Named;
+import org.springframework.stereotype.Service;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +14,7 @@ import javax.inject.Named;
  * Time: 02:44 م
  * To change this template use File | Settings | File Templates.
  */
-@Named
-public class PersonServiceImpl extends BaseServiceImpl<PersonDto, Person, PersonDao> implements PersonService {
+@Service
+public class PersonServiceImpl extends BaseServiceImpl<PersonDto, Person, PersonDao> implements PersonService<PersonDto> {
 
 }
