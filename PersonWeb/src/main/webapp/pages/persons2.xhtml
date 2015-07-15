@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:g="http://java.sun.com/jsf/composite/gazelle">
+<h:head>
+    <base href="#{personController.basePath}"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="css/main.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layout.css"/>
+
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc.js"></script>
+    <script type="text/javascript" src="js/calendar/calendar.all.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.ui.datepicker-cc-fa.js"></script>
+    <script type="text/javascript" src="js/calendar/jquery.maskedinput.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+    <title>#{personlabel.PERSON_LIST}</title>
+
+</h:head>
+<h:body>
+
+    <f:view>
+        <p:growl id="growl" showDetail="true" life="5000"/>
+    <h:messages/>
+        <h:form id="form">
+            <p:commandButton immediate="true" actionListener="#{personController.initializePerson}"
+
+                             icon="ui-icon-plus" title="#{label.SELECT_ALL_BUTTON_LABEL}">
+            </p:commandButton>
+            <p:inputText id="asdf" value="#{personController.counter}" />
+            <p:commandButton  actionListener="#{personController.increaseNumber}"
+                             icon="ui-icon-plus" title="add" update=":form:asdf">
+            </p:commandButton>
+            <br/><br/>
+            <p:dataTable id="personList" var="person" lazy="true"
+                         value="#{personController.persons}" selectionMode="single" rowKey="#{person.PK}"
+                         rows="10" paginator="true" paginatorPosition="bottom" rowIndexVar="rowIndex"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         currentPageReportTemplate="{currentPage} #{label.FROM} {totalPages}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="#{label.ROW}">
+                    #{rowIndex+1}
+                </p:column>
+
+                <p:column headerText="#{personlabel.FIRST_NAME}" filterBy="#{person.firstName}" filterMatchMode="contains">
+                    <h:outputText value="#{person.firstName}"/>
+                </p:column>
+
+                <p:column headerText="#{personlabel.LAST_NAME}">
+                    <h:outputText value="#{person.lastName}"/>
+                </p:column>
+
+                <p:column headerText="#{personlabel.BIRTHDAY}">
+                    <g:pooyaDate value="#{person.birthday}" readOnly="true"/>
+                </p:column>
+
+                <p:column headerText="#{personlabel.CITY}">
+                    <h:outputText value="#{person.city.name}"/>
+                </p:column>
+
+                <p:column headerText="#{personlabel.ORGANIZATIONAL_UNIT}">
+                    <h:outputText value="#{person.organizationalUnit.name}"/>
+                </p:column>
+
+                <p:column style="width:42px;text-align: center" headerText="#{label.EDIT}">
+                    <p:commandButton process="@this" update=":personForm:personDetail"
+                                     oncomplete="PF('personDialog').show()"
+                                     icon="ui-icon-pencil" title="#{label.EDIT}">
+                        <f:setPropertyActionListener value="#{person}"
+                                                     target="#{personController.model.selectedPerson}"/>
+                    </p:commandButton>
+                </p:column>
+                <p:column style="width:32px;text-align: center" headerText="#{label.DELETE}">
+                    <p:commandButton process="@this" oncomplete="PF('deleteDialog').show()" icon="ui-icon-trash"
+                                     title="#{label.DELETE}">
+                        <f:setPropertyActionListener value="#{person}"
+                                                     target="#{personController.model.selectedPerson}"/>
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+        <p:dialog id="personInfoDialog" header="#{personlabel.PERSON_INFO}" widgetVar="personDialog" modal="true" height="170" width="600"
+                  appendTo="@(body)"
+                  showEffect="fade"
+                  hideEffect="fade" resizable="false">
+            <h:form id="personForm">
+
+                <p:outputPanel id="personDetail" styleClass="container">
+                    <div class="r_field margin_right">
+                        <h:outputText value="#{personlabel.FIRST_NAME}"/>
+                        <p:inputText id="firstName" componentType="number"  value="#{personController.model.selectedPerson.firstName}"
+                                />
+                    </div>
+                    <div class="r_field">
+                        <h:outputText value="#{personlabel.LAST_NAME}"/>
+                        <p:inputText value="#{personController.model.selectedPerson.lastName}" />
+                    </div>
+                    <div class="r_field margin_right">
+                        <h:outputText value="#{personlabel.BIRTHDAY}"/>
+                        <g:pooyaDate id="birthday" value="#{personController.model.selectedPerson.birthday}"/>
+                    </div>
+                    <div class="r_field">
+                        <h:outputText value="#{personlabel.CITY}"/>
+                        <p:selectOneMenu id="city" value="#{personController.model.selectedPerson.city.id}">
+                            <f:selectItems value="#{personController.model.cities}" var="city"
+                                           itemLabel="#{city.name}" itemValue="#{city.PK}"/>
+                        </p:selectOneMenu>
+                    </div>
+                    <div class="r_field margin_right">
+                        <h:outputText value="#{personlabel.ORGANIZATIONAL_UNIT}"/>
+                        <g:pooyaLov id="orgUnit" selectEventListener="#{personController.selectAction}"
+                                    value="#{personController.model.selectedPerson.organizationalUnit.name}"
+                                    update=":personForm:orgUnit:orgUnit"
+                                    actionListener="#{personController.openModalDialog('organizationalUnits')}"/>
+                    </div>
+                    <div class="r_field">
+                        <p:commandButton value="#{label.SAVE}" action="#{personController.update}" update=":form:personList :growl">
+                        </p:commandButton>
+                    </div>
+                </p:outputPanel>
+            </h:form>
+        </p:dialog>
+        <p:dialog modal="true" appendTo="@(body)" global="true" showEffect="fade" hideEffect="explode"
+                  widgetVar="deleteDialog">
+
+            <p:outputLabel value="#{label.DELETE_CONFIRM}"/>
+            <br/><br/>
+            <p:commandButton value="#{label.YES}" immediate="true" action="#{personController.delete}"
+                             oncomplete="PF('deleteDialog').hide()"
+                             styleClass="ui-confirmdialog-yes" icon="ui-icon-check" update=":form:personList growl"/>
+            <p:commandButton value="#{label.NO}" immediate="true" oncomplete="PF('deleteDialog').hide()"
+                             styleClass="ui-confirmdialog-no"
+                             icon="ui-icon-close"/>
+        </p:dialog>
+    </f:view>
+</h:body>
+</html>

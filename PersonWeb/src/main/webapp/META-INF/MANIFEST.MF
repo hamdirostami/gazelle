@@ -1,0 +1,11 @@
+Manifest-Version: 1.0.0
+Implementation-Vendor: Pooya Corporation
+Implementation-Title: TEST Person Web
+Implementation-Version: 1.0.0
+Specification-Version: 1.0.0
+Implementation-Time: 2015
+Specification-Vendor: Pooya Corporation
+Sealed: true
+Created-By: 1.0.0 (Pooya Corporation)
+Specification-Title: MCDS Business Component
+Extension-Name: test.person.web
