@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" build-on-make="true" name="PersonWeb-1.0-SNAPSHOT">
-    <output-path>$PROJECT_DIR$/PersonWeb/target/</output-path>
-    <root id="archive" name="PersonWeb-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="PersonWeb-1.0-SNAPSHOT exploded" />
-    </root>
-  </artifact>
-</component>
